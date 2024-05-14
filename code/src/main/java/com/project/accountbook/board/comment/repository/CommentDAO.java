@@ -10,16 +10,29 @@ import java.util.List;
 import com.project.accountbook.board.comment.model.CommentDTO;
 import com.project.accountbook.util.DBUtil;
 
+/**
+ * 댓글과 관련된 데이터베이스 작업을 수행하는 DAO 클래스입니다.
+ */
 public class CommentDAO {
     private Connection conn;
     private Statement stat;
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * CommentDAO 생성자입니다.
+     * 데이터베이스 연결을 설정합니다.
+     */
     public CommentDAO() {
         this.conn = DBUtil.open("125.241.245.222", "webproject", "java1234");
     }
-    // 싫어요 기능 처리 메서드
+
+    /**
+     * 댓글의 싫어요 수를 증가시키는 메서드입니다.
+     *
+     * @param commentSeq 댓글 번호입니다.
+     * @return 업데이트된 행의 수를 반환합니다.
+     */
     public int updateCommentDislike(String commentSeq) {
         try {
             String sql = "UPDATE tblComments SET dislikeCount = dislikeCount + 1 WHERE seq = ?";
@@ -31,10 +44,13 @@ public class CommentDAO {
         }
         return 0;
     }
-    
-    
-    //댓글 좋아요
-    
+
+    /**
+     * 댓글의 좋아요 수를 증가시키는 메서드입니다.
+     *
+     * @param commentSeq 댓글 번호입니다.
+     * @return 업데이트된 행의 수를 반환합니다.
+     */
     public int updateCommentLike(String commentSeq) {
         try {
             String sql = "UPDATE tblComments SET likeCount = likeCount + 1 WHERE seq = ?";
@@ -46,8 +62,13 @@ public class CommentDAO {
         }
         return 0;
     }
-    
-    //댓글 조회
+
+    /**
+     * 게시글 번호로 댓글 목록을 조회하는 메서드입니다.
+     *
+     * @param postSeq 게시글 번호입니다.
+     * @return 댓글 목록을 반환합니다.
+     */
     public List<CommentDTO> getCommentsByPostSeq(String postSeq) {
         List<CommentDTO> comments = new ArrayList<>();
         try {
@@ -82,13 +103,17 @@ public class CommentDAO {
         }
         return comments;
     }
-    //(seqcomments.nextVal
-    
-    //댓글 작성
+
+    /**
+     * 댓글을 추가하는 메서드입니다.
+     *
+     * @param commentDto 댓글 정보를 담은 DTO 객체입니다.
+     * @return 추가된 행의 수를 반환합니다.
+     */
     public int addComment(CommentDTO commentDto) {
         try {
             String sql = "INSERT INTO tblComments (seq, seqPost, seqUser, content, writeDate, likeCount, dislikeCount, reportCount) " +
-                         "VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM tblcomments), ?, ?, ?, SYSDATE, 0, 0, 0 )";
+                         "VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM tblcomments), ?, ?, ?, SYSDATE, 0, 0, 0)";
             pstat = conn.prepareStatement(sql);
             pstat.setInt(1, commentDto.getSeqPost());
             pstat.setInt(2, commentDto.getSeqUser());
@@ -100,7 +125,13 @@ public class CommentDAO {
         }
         return 0;
     }
- // 답글 조회
+
+    /**
+     * 댓글 번호로 답글 목록을 조회하는 메서드입니다.
+     *
+     * @param commentSeq 댓글 번호입니다.
+     * @return 답글 목록을 반환합니다.
+     */
     public List<CommentDTO> getReplyCommentsByCommentSeq(String commentSeq) {
         List<CommentDTO> replyComments = new ArrayList<>();
         try {
@@ -133,7 +164,13 @@ public class CommentDAO {
         }
         return replyComments;
     }
-    //답글 작성
+
+    /**
+     * 답글을 추가하는 메서드입니다.
+     *
+     * @param replyComment 답글 정보를 담은 DTO 객체입니다.
+     * @return 추가된 행의 수를 반환합니다.
+     */
     public int addReplyComment(CommentDTO replyComment) {
         try {
             String sql = "INSERT INTO tblReplyComments (seq, seqComments, seqUser, content, writeDate, likeCount, dislikeCount, reportCount) " +
@@ -150,9 +187,14 @@ public class CommentDAO {
         }
         return 0;
     }
-    
-    
-    //댓글 수정 
+
+    /**
+     * 댓글을 수정하는 메서드입니다.
+     *
+     * @param commentSeq    수정할 댓글 번호입니다.
+     * @param editedContent 수정된 댓글 내용입니다.
+     * @return 수정된 행의 수를 반환합니다.
+     */
     public int updateComment(String commentSeq, String editedContent) {
         try {
             String sql = "UPDATE tblComments SET content = ? WHERE seq = ?";
@@ -165,7 +207,13 @@ public class CommentDAO {
         }
         return 0;
     }
-    //댓글 삭제 
+
+    /**
+     * 댓글을 삭제하는 메서드입니다.
+     *
+     * @param commentSeq 삭제할 댓글 번호입니다.
+     * @return 삭제된 행의 수를 반환합니다.
+     */
     public int deleteComment(String commentSeq) {
         try {
             String sql = "DELETE FROM tblComments WHERE seq = ?";
@@ -177,8 +225,14 @@ public class CommentDAO {
         }
         return 0;
     }
-    
-    //답글 수정
+
+    /**
+     * 답글을 수정하는 메서드입니다.
+     *
+     * @param replyCommentSeq 수정할 답글 번호입니다.
+     * @param editedContent   수정된 답글 내용입니다.
+     * @return 수정된 행의 수를 반환합니다.
+     */
     public int updateReplyComment(String replyCommentSeq, String editedContent) {
         try {
             String sql = "UPDATE tblReplyComments SET content = ? WHERE seq = ?";
@@ -191,9 +245,14 @@ public class CommentDAO {
         }
         return 0;
     }
-    
-    //답글 작성자 확인
- // 답글 작성자 확인
+
+    /**
+     * 답글 작성자를 확인하는 메서드입니다.
+     *
+     * @param replyCommentSeq 확인할 답글 번호입니다.
+     * @param seqUser         사용자 번호입니다.
+     * @return 작성자 여부를 반환합니다.
+     */
     public boolean isReplyCommentAuthor(String replyCommentSeq, int seqUser) {
         try {
             String sql = "SELECT COUNT(*) FROM tblReplyComments WHERE seq = ? AND seqUser = ?";
@@ -210,7 +269,13 @@ public class CommentDAO {
         }
         return false;
     }
- // 답글 삭제
+
+    /**
+     * 답글을 삭제하는 메서드입니다.
+     *
+     * @param replyCommentSeq 삭제할 답글 번호입니다.
+     * @return 삭제된 행의 수를 반환합니다.
+     */
     public int deleteReplyComment(String replyCommentSeq) {
         try {
             String sql = "DELETE FROM tblReplyComments WHERE seq = ?";
@@ -222,5 +287,4 @@ public class CommentDAO {
         }
         return 0;
     }
-    
 }

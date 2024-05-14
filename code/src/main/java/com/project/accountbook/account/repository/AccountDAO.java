@@ -31,267 +31,329 @@ import com.project.accountbook.user.model.UserDTO;
 import com.project.accountbook.user.repository.UserDAO;
 import com.project.accountbook.util.DBUtil;
 
+/**
+* 가계부 관련 데이터베이스 작업을 수행하는 DAO 클래스입니다.
+*/
 public class AccountDAO {
-	
-	private Connection conn;
-	private Statement stat;
-	private PreparedStatement pstat;
-	private ResultSet rs;
-	
-	public AccountDAO() {
-		this.conn = DBUtil.open("125.241.245.222", "webproject", "java1234");
-	}
-	
-	//가계부 작성 > 프론트에서 카드 선택해서 작성하는 거면 카드 seq넘겨 받아서 `tblReasonChangeCategory`에서 seq 찾아야할 듯(map?)
-	public int add(AccountInfoDTO dto) {
-		
-		try {
-			
-			String sql = "insert into ";
+   
+   private Connection conn;
+   private Statement stat;
+   private PreparedStatement pstat;
+   private ResultSet rs;
+   
+   /**
+    * AccountDAO 생성자입니다.
+    * 데이터베이스 연결을 설정합니다.
+    */
+   public AccountDAO() {
+   	this.conn = DBUtil.open("125.241.245.222", "webproject", "java1234");
+   }
+   
+   /**
+    * 가계부를 추가하는 메서드입니다.
+    * @param dto 추가할 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 추가 결과를 반환합니다.
+    */
+   public int add(AccountInfoDTO dto) {
+   	
+   	try {
+   		
+   		String sql = "insert into ";
 
-			pstat = conn.prepareStatement(sql);
+   		pstat = conn.prepareStatement(sql);
 //			pstat.setString(1, dto.get);
 
 
-			return pstat.executeUpdate();
-			
-		} catch (Exception e) {
-			System.out.println("AccountDAO.add");
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
-	
-	//가계부 작성할 때 카테고리 자동 매칭(AccountInfoDTO에 키워드랑 카테고리 테이블에 대한 대용 추가할지? 따로 뺄지)
-	public int addCategory(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	
-	//가계부 읽기(map으로 상황 선택해야할 듯)
-	public int get(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-		
-	//가계부 페이지 > 이번달 지출, 수입 계산
-	public int getExpenditureIncome(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	 
-	
-	//가계부 목록 읽기
-	public int list(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	//가계부 수정
-	public int update(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	//가계부 삭제
-	public int del(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	
-	//구매 위시 목록 작성
-	public int addProduct(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	//구매 위시 목록 수정
-	public int updateProduct(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	//구매 위시 목록 삭제
-	public int delProduct(AccountInfoDTO dto) {
-		
-		return 0;
-	}
-	
-	//가계부 분석 읽기
-	public ArrayList<AccountInfoDTO> nowAnalysis(String id, HashMap<String, String> map) {
-		
-		try {
-			
-			String period = map.get("period");
-			
-			String sql = "select\r\n"
-					+ "    sum(price) totalPrice,\r\n"
-					+ "    ac.NAME acName\r\n"
-					+ "from tblaccinfo ai\r\n"
-					+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
-					+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
-					+ "    where IDMEMBER = ?";
-			
-			
-			if (period.equals("day")) {
-				sql +=    "and trunc(ai.accInfoDate) = trunc(sysdate) -- 오늘 날짜\r\n";
-				
-			} else if (period.equals("week")) {
-				sql +=  "and ai.accInfoDate >= trunc(sysdate, 'IW') -- 이번주 시작 날짜\r\n"
-						+ "    and ai.accInfoDate < trunc(sysdate) + 1 -- 이번주 종료 날짜\r\n";
+   		return pstat.executeUpdate();
+   		
+   	} catch (Exception e) {
+   		System.out.println("AccountDAO.add");
+   		e.printStackTrace();
+   	}
+   	
+   	return 0;
+   }
+   
+   /**
+    * 카테고리 자동 매칭을 수행하는 메서드입니다.
+    * @param dto 카테고리 자동 매칭에 필요한 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 카테고리 자동 매칭 결과를 반환합니다.
+    */
+   public int addCategory(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 가계부를 읽는 메서드입니다.
+    * @param dto 읽을 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 가계부 읽기 결과를 반환합니다.
+    */
+   public int get(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   	
+   /**
+    * 이번달 지출과 수입을 계산하는 메서드입니다.
+    * @param dto 계산에 필요한 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 지출과 수입 계산 결과를 반환합니다.
+    */
+   public int getExpenditureIncome(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 가계부 목록을 읽는 메서드입니다.
+    * @param dto 목록 조회에 필요한 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 가계부 목록 읽기 결과를 반환합니다.
+    */
+   public int list(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 가계부를 수정하는 메서드입니다.
+    * @param dto 수정할 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 수정 결과를 반환합니다.
+    */
+   public int update(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 가계부를 삭제하는 메서드입니다.
+    * @param dto 삭제할 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 삭제 결과를 반환합니다.
+    */
+   public int del(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 구매 위시 목록을 작성하는 메서드입니다.
+    * @param dto 구매 위시 목록 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 구매 위시 목록 작성 결과를 반환합니다.
+    */
+   public int addProduct(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 구매 위시 목록을 수정하는 메서드입니다.
+    * @param dto 수정할 구매 위시 목록 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 구매 위시 목록 수정 결과를 반환합니다.
+    */
+   public int updateProduct(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 구매 위시 목록을 삭제하는 메서드입니다.
+    * @param dto 삭제할 구매 위시 목록 정보를 담은 AccountInfoDTO 객체입니다.
+    * @return 구매 위시 목록 삭제 결과를 반환합니다.
+    */
+   public int delProduct(AccountInfoDTO dto) {
+   	
+   	return 0;
+   }
+   
+   /**
+    * 현재 기간의 카테고리별 지출 금액을 조회하는 메서드입니다.
+    * @param id 회원 아이디입니다.
+    * @param map 조회 조건을 담은 HashMap 객체입니다.
+    * @return 카테고리별 지출 금액을 담은 ArrayList를 반환합니다.
+    */
+   public ArrayList<AccountInfoDTO> nowAnalysis(String id, HashMap<String, String> map) {
+   	
+   	try {
+   		
+   		String period = map.get("period");
+   		
+   		String sql = "select\r\n"
+   				+ "    sum(price) totalPrice,\r\n"
+   				+ "    ac.NAME acName\r\n"
+   				+ "from tblaccinfo ai\r\n"
+   				+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
+   				+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
+   				+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
+   				+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
+   				+ "    where IDMEMBER = ?";
+   		
+   		
+   		if (period.equals("day")) {
+   			sql +=    "and trunc(ai.accInfoDate) = trunc(sysdate) -- 오늘 날짜\r\n";
+   			
+   		} else if (period.equals("week")) {
+   			sql +=  "and ai.accInfoDate >= trunc(sysdate, 'IW') -- 이번주 시작 날짜\r\n"
+   					+ "    and ai.accInfoDate < trunc(sysdate) + 1 -- 이번주 종료 날짜\r\n";
 
-			} else if (period.equals("month")) {
-				sql +=    "                                        and ai.accInfoDate \r\n"
-						+ "                                            between to_date(sysdate, 'YY/MM/DD') \r\n"
-						+ "                                                - interval '1' month and to_date(sysdate, 'YY/MM/DD')\r\n";
+   		} else if (period.equals("month")) {
+   			sql +=    "                                        and ai.accInfoDate \r\n"
+   					+ "                                            between to_date(sysdate, 'YY/MM/DD') \r\n"
+   					+ "                                                - interval '1' month and to_date(sysdate, 'YY/MM/DD')\r\n";
 
-			}
-			
-			 sql += "and ai.SEQDEPOSITWITHDRAWALSTATUS = 2\r\n"
-			 		+ "    group by ac.NAME";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
-			
-			rs = pstat.executeQuery();
-			
-			ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
-			
-			while (rs.next()) {
-				
-				AccountInfoDTO dto = new AccountInfoDTO();
-				
-				dto.setTotalPrice(rs.getInt("totalPrice"));
-				dto.setAcName(rs.getString("acName"));
-				
-				list.add(dto);				
-			}	
-			
-			return list;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-	
-	public ArrayList<AccountInfoDTO> beforeAnalysis(String id, HashMap<String, String> map) {
-		
-		try {
-			
-			String period = map.get("period");
-			
-			String sql = "select\r\n"
-					+ "    sum(price) totalPrice,\r\n"
-					+ "    ac.NAME acName\r\n"
-					+ "from tblaccinfo ai\r\n"
-					+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
-					+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
-					+ "    where IDMEMBER = ?";
-			
-			
-			if (period.equals("day")) {
-				sql +=    "and trunc(ai.accInfoDate) = trunc(sysdate) - 1 -- 어제 날짜\r\n";
-				
-			} else if (period.equals("week")) {
-				sql +=  " and ai.accInfoDate >= trunc(sysdate, 'IW') - 7 -- 저번주 시작 날짜\r\n"
-				   + "    and ai.accInfoDate < trunc(sysdate, 'IW') -- 저번주 종료 날짜\r\n";
+   		}
+   		
+   		 sql += "and ai.SEQDEPOSITWITHDRAWALSTATUS = 2\r\n"
+   		 		+ "    group by ac.NAME";
+   		
+   		pstat = conn.prepareStatement(sql);
+   		pstat.setString(1, id);
+   		
+   		rs = pstat.executeQuery();
+   		
+   		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
+   		
+   		while (rs.next()) {
+   			
+   			AccountInfoDTO dto = new AccountInfoDTO();
+   			
+   			dto.setTotalPrice(rs.getInt("totalPrice"));
+   			dto.setAcName(rs.getString("acName"));
+   			
+   			list.add(dto);				
+   		}	
+   		
+   		return list;
+   		
+   	} catch (Exception e) {
+   		e.printStackTrace();
+   	}
+   	
+   	return null;
+   }
+   
+   /**
+    * 이전 기간의 카테고리별 지출 금액을 조회하는 메서드입니다.
+    * @param id 회원 아이디입니다.
+    * @param map 조회 조건을 담은 HashMap 객체입니다.
+    * @return 카테고리별 지출 금액을 담은 ArrayList를 반환합니다.
+    */
+   public ArrayList<AccountInfoDTO> beforeAnalysis(String id, HashMap<String, String> map) {
+   	
+   	try {
+   		
+   		String period = map.get("period");
+   		
+   		String sql = "select\r\n"
+   				+ "    sum(price) totalPrice,\r\n"
+   				+ "    ac.NAME acName\r\n"
+   				+ "from tblaccinfo ai\r\n"
+   				+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
+   				+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
+   				+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
+   				+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
+   				+ "    where IDMEMBER = ?";
+   		
+   		
+   		if (period.equals("day")) {
+   			sql +=    "and trunc(ai.accInfoDate) = trunc(sysdate) - 1 -- 어제 날짜\r\n";
+   			
+   		} else if (period.equals("week")) {
+   			sql +=  " and ai.accInfoDate >= trunc(sysdate, 'IW') - 7 -- 저번주 시작 날짜\r\n"
+   			   + "    and ai.accInfoDate < trunc(sysdate, 'IW') -- 저번주 종료 날짜\r\n";
 
-			} else if (period.equals("month")) {
-				sql +=    "and ai.accInfoDate \r\n"
-						+ "                                            between to_date(sysdate, 'YY/MM/DD') \r\n"
-						+ "                                                - interval '2' month and to_date(sysdate, 'YY/MM/DD')\r\n"
-						+ "                                                    - interval '1' month\r\n";
+   		} else if (period.equals("month")) {
+   			sql +=    "and ai.accInfoDate \r\n"
+   					+ "                                            between to_date(sysdate, 'YY/MM/DD') \r\n"
+   					+ "                                                - interval '2' month and to_date(sysdate, 'YY/MM/DD')\r\n"
+   					+ "                                                    - interval '1' month\r\n";
 
-			}
-			
-			 sql += "and ai.SEQDEPOSITWITHDRAWALSTATUS = 2\r\n"
-			 		+ "    group by ac.NAME";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
-			
-			rs = pstat.executeQuery();
-			
-			ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
-			
-			while (rs.next()) {
-				
-				AccountInfoDTO dto = new AccountInfoDTO();
-				
-				dto.setTotalPrice(rs.getInt("totalPrice"));
-				dto.setAcName(rs.getString("acName"));
-				
-				list.add(dto);				
-			}	
-			
-			return list;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+   		}
+   		
+   		 sql += "and ai.SEQDEPOSITWITHDRAWALSTATUS = 2\r\n"
+   		 		+ "    group by ac.NAME";
+   		
+   		pstat = conn.prepareStatement(sql);
+   		pstat.setString(1, id);
+   		
+   		rs = pstat.executeQuery();
+   		
+   		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
+   		
+   		while (rs.next()) {
+   			
+   			AccountInfoDTO dto = new AccountInfoDTO();
+   			
+   			dto.setTotalPrice(rs.getInt("totalPrice"));
+   			dto.setAcName(rs.getString("acName"));
+   			
+   			list.add(dto);				
+   		}	
+   		
+   		return list;
+   		
+   	} catch (Exception e) {
+   		e.printStackTrace();
+   	}
 
-		return null;
-	}		
-	
-	// 가계부 분석 > 이번달 고정 지출 찾기
-	public ArrayList<AccountInfoDTO> getFixedFluctuation(String id) {
+   	return null;
+   }	
 
-		try {
+   /**
+    * 이번달 고정 지출 정보를 조회하는 메서드입니다.
+    * @param id 회원 아이디입니다.
+    * @return 고정 지출 정보를 담은 ArrayList를 반환합니다.
+    */	
+   public ArrayList<AccountInfoDTO> getFixedFluctuation(String id) {
 
-			String sql = "select \r\n"
-					+ "    ai.accinfodate as accinfodate,\r\n"
-					+ "    ai.price as price,\r\n"
-					+ "    ffp.period as period\r\n"
-					+ "from \r\n"
-					+ "    tblaccinfo ai\r\n"
-					+ "    inner join tblfixeddepositwithdrawalcheck fdw on fdw.seq = ai.seqfixedfluctuationcheck\r\n"
-					+ "    inner join tblacc acc on acc.seq = ai.seqacc\r\n"
-					+ "    inner join tblfixedfluctuationperiod ffp on ffp.seq = fdw.seqfixedfluctuationperiod\r\n"
-					+ "where \r\n"
-					+ "    fdw.seqfixedfluctuationperiod != 0\r\n"
-					+ "    and acc.idmember = ?\r\n"
-					+ "    and to_date(ai.accinfodate, 'yy/mm/dd') + interval '1' month * ffp.period > current_date";
+   	try {
 
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
+   		String sql = "select \r\n"
+   				+ "    ai.accinfodate as accinfodate,\r\n"
+   				+ "    ai.price as price,\r\n"
+   				+ "    ffp.period as period\r\n"
+   				+ "from \r\n"
+   				+ "    tblaccinfo ai\r\n"
+   				+ "    inner join tblfixeddepositwithdrawalcheck fdw on fdw.seq = ai.seqfixedfluctuationcheck\r\n"
+   				+ "    inner join tblacc acc on acc.seq = ai.seqacc\r\n"
+   				+ "    inner join tblfixedfluctuationperiod ffp on ffp.seq = fdw.seqfixedfluctuationperiod\r\n"
+   				+ "where \r\n"
+   				+ "    fdw.seqfixedfluctuationperiod != 0\r\n"
+   				+ "    and acc.idmember = ?\r\n"
+   				+ "    and to_date(ai.accinfodate, 'yy/mm/dd') + interval '1' month * ffp.period > current_date";
 
-			rs = pstat.executeQuery();
+   		pstat = conn.prepareStatement(sql);
+   		pstat.setString(1, id);
 
-			ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
+   		rs = pstat.executeQuery();
 
-			while (rs.next()) {
+   		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
 
-				AccountInfoDTO dto = new AccountInfoDTO();
+   		while (rs.next()) {
 
-				dto.setAccInfoDate(rs.getString("accInfoDate"));
-				dto.setPrice(rs.getInt("price"));
-				dto.setFfpPeriod(rs.getInt("period"));
-				
-				list.add(dto);
-			}
+   			AccountInfoDTO dto = new AccountInfoDTO();
 
-			return list;
+   			dto.setAccInfoDate(rs.getString("accInfoDate"));
+   			dto.setPrice(rs.getInt("price"));
+   			dto.setFfpPeriod(rs.getInt("period"));
+   			
+   			list.add(dto);
+   		}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+   		return list;
 
-		return null;
-	}
-	
-	//가계부 분석 > 챌린지 정보 불러오기
-	public UserDTO getSavingsGoals(String id) {
+   	} catch (Exception e) {
+   		e.printStackTrace();
+   	}
 
-		try {
+   	return null;
+   }
+   
+   /**
+    * 챌린지 정보를 조회하는 메서드입니다.
+    * @param id 회원 아이디입니다.
+    * @return 챌린지 정보를 담은 UserDTO 객체를 반환합니다.
+   */
+   public UserDTO getSavingsGoals(String id) {
+	   try {
 
 			String sql = "select \r\n"
 					+ "su.monthlyPaycheck monthlyPaycheck, --월급\r\n"
@@ -333,8 +395,12 @@ public class AccountDAO {
 
 		return null;
 	}
-	
-	//가계부 분석 > 이번달 사용 금액 불러오기
+
+	/**
+	 * 이번달 사용 금액을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 이번달 사용 금액을 반환합니다.
+	 */
 	public int getMonthUsage (String id) {
 
 		try {
@@ -369,8 +435,12 @@ public class AccountDAO {
 
 		return 0;
 	}
-	
-	//가계부 분석 > 이번달 입금 불러오기
+
+	/**
+	 * 이번달 입금 금액을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 이번달 입금 금액을 반환합니다.
+	 */
 	public int getMonthSaving (String id) {
 		
 		try {
@@ -405,8 +475,12 @@ public class AccountDAO {
 		
 		return 0;
 	}
-	
-	//가계부 분석 > 총 저축 금액 불러오기
+
+	/**
+	 * 총 저축 금액을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 총 저축 금액을 반환합니다.
+	 */
 	public int getTotalSaving(String id) {
 
 		try {
@@ -440,8 +514,12 @@ public class AccountDAO {
 
 		return 0;
 	}
-	
-	//가계부 분석 > 현재까지 총 지출 정보 불러오기
+
+	/**
+	 * 현재까지 총 지출 금액을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 총 지출 금액을 반환합니다.
+	 */
 	public int getTotalExpenditure(String id) {
 
 		try {
@@ -473,9 +551,13 @@ public class AccountDAO {
 
 		return 0;
 	}
-	
-	
-	//가계부 분석 > 챌린지에 대한 정보 읽기(이번달 목표치, 현상황)
+
+	/**
+	 * 챌린지에 대한 정보를 조회하는 메서드입니다.
+	 * 이번달 목표치와 현재 상황을 조회합니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 챌린지 정보를 담은 HashMap을 반환합니다.
+	 */
 	public HashMap<String, String> getChallenge(String id) {
 		
 		try {
@@ -532,9 +614,7 @@ public class AccountDAO {
 					ffpPeriod = dto.getFfpPeriod();
 					
 					totalfixedFluctuation += price;
-					
 //					System.out.println(totalfixedFluctuation);
-
 				}
 				
 			}
@@ -543,281 +623,290 @@ public class AccountDAO {
 			monthlyPaycheck = userDTO.getMonthlyPaycheck();
 			savingsGoals = userDTO.getSavingsGoals();
 //			userDTO.getSeqCompressionIntensity();
-			spPeriod = userDTO.getSpPeriod();
+spPeriod = userDTO.getSpPeriod();
 //			joinDate = userDTO.getJoinDate();
-			monthsSinceJoin = userDTO.getMonthsSinceJoin();
-			
-			//남은 저축 금액
-			remainingSavings = savingsGoals - totalSaving;
+monthsSinceJoin = userDTO.getMonthsSinceJoin();
+//남은 저축 금액
+		remainingSavings = savingsGoals - totalSaving;
 
-			//한 달 평균 지출 금액
-			avgMonthlySpending = totalExpenditure / monthsSinceJoin;
-			
-			//한 달 평균 저축 금액
-			avgMonthlySavings = totalSaving / monthsSinceJoin;
-					
-			//목표 달성까지 기간 계산
-			goalAchievementPeriod = remainingSavings / avgMonthlySavings;
-					
-			//목표 기간 안에 목표 금액을 저축하기 위해 매달 저축해야하는 평균
-			avgMonthlySavingsPrice = remainingSavings / (spPeriod - monthsSinceJoin);
-			
-			//달 평균 사용 가능 금액
-			avgMonthlyUsablePrice = (monthSaving - monthUsage - totalfixedFluctuation) - avgMonthlySavingsPrice;
-			
-			//일 편귱 사용 가능 금액
-			avgDailyUsablePrice = avgMonthlyUsablePrice / lastDayOfMonth;
-			
-			map.put("savingsGoals", formatter.format(savingsGoals));
-			map.put("totalSaving", formatter.format(totalSaving));
-			map.put("remainingSavings", formatter.format(remainingSavings));
-			map.put("avgMonthlySpending", formatter.format(avgMonthlySpending));
-			map.put("avgMonthlySavings", formatter.format(avgMonthlySavings));
-			map.put("goalAchievementPeriod", formatter.format(goalAchievementPeriod));
-			map.put("monthUsage", formatter.format(monthUsage));
-			
-			map.put("spPeriod", formatter.format(spPeriod));
-			map.put("monthsSinceJoin", formatter.format(monthsSinceJoin));
-			
-			map.put("avgMonthlySavings", formatter.format(avgMonthlySavings));
-			map.put("avgMonthlySavingsPrice", formatter.format(avgMonthlySavingsPrice));
-			map.put("avgMonthlyUsablePrice", formatter.format(avgMonthlyUsablePrice));
-			map.put("avgDailyUsablePrice", formatter.format(avgDailyUsablePrice));
-			
-			return map;
-			
-		} catch (Exception e) {
-			System.out.println("AccountDAO.getChallenge");
-			e.printStackTrace();
-		}
+		//한 달 평균 지출 금액
+		avgMonthlySpending = totalExpenditure / monthsSinceJoin;
 		
-		return null;
-
-	}
-	
-	public HashMap<String, Integer> getPeriodUsage (String id) {
-
-		try {
-
-			String sql = "SELECT \r\n"
-					+ "    COALESCE(sub1.totalPrice, 0) beforeMonthUsage,\r\n"
-					+ "    COALESCE(sub2.totalPrice, 0) nowMonthUsage,\r\n"
-					+ "    COALESCE(sub1.idMember, sub2.idMember) idMember\r\n"
-					+ "FROM (\r\n"
-					+ "    -- 2달 전부터 1달 전까지의 사용 금액\r\n"
-					+ "    SELECT \r\n"
-					+ "        SUM(ai.price) AS totalPrice,\r\n"
-					+ "        me.ID AS idMember\r\n"
-					+ "    from tblaccinfo ai\r\n"
-					+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
-					+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
-					+ "    WHERE \r\n"
-					+ "        me.ID = ?\r\n"
-					+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '2' month AND to_date(sysdate, 'YY/MM/DD') - interval '1' month -- 2달 전부터 1달 전까지\r\n"
-					+ "        AND ai.seqDepositWithdrawalStatus = 2 -- 입출금 상태\r\n"
-					+ "    GROUP BY \r\n"
-					+ "        me.ID\r\n"
-					+ ") sub1\r\n"
-					+ "FULL OUTER JOIN (\r\n"
-					+ "    -- 1달 전부터 현재까지의 사용 금액\r\n"
-					+ "    SELECT \r\n"
-					+ "        SUM(ai.price) AS totalPrice,\r\n"
-					+ "        me.ID AS idMember\r\n"
-					+ "    from tblaccinfo ai\r\n"
-					+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
-					+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
-					+ "    WHERE \r\n"
-					+ "        me.ID = ?\r\n"
-					+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '1' month AND to_date(sysdate, 'YY/MM/DD') -- 1달 전부터 현재까지\r\n"
-					+ "        AND ai.seqDepositWithdrawalStatus = 2 -- 입출금 상태\r\n"
-					+ "    GROUP BY \r\n"
-					+ "        me.ID\r\n"
-					+ ") sub2 ON sub1.idMember = sub2.idMember";
-
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
-			pstat.setString(2, id);
-
-			rs = pstat.executeQuery();
-
-			HashMap<String, Integer> map = new HashMap<>();
-			
-			while (rs.next()) {
+		//한 달 평균 저축 금액
+		avgMonthlySavings = totalSaving / monthsSinceJoin;
 				
-				map.put("nowMonthUsage", rs.getInt("nowMonthUsage"));
-				map.put("beforeMonthUsage", rs.getInt("beforeMonthUsage"));
+		//목표 달성까지 기간 계산
+		goalAchievementPeriod = remainingSavings / avgMonthlySavings;
 				
-			}
-
-			return map; 
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-	
-	public AccountInfoDTO getMaxUsageCategory(String id) {
-
-		try {
-
-			String sql = "WITH max_category AS (\r\n"
-					+ "    SELECT \r\n"
-					+ "        ac.name AS acName,\r\n"
-					+ "        SUM(ai.price) AS totalPrice\r\n"
-					+ "    FROM \r\n"
-					+ "        tblaccinfo ai\r\n"
-					+ "        INNER JOIN TBLACCCATEGORYLIST acl ON ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "        INNER JOIN TBLACCCATEGORY ac ON acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "        INNER JOIN TBLACC a ON ai.SEQACC = a.SEQ\r\n"
-					+ "        INNER JOIN TBLMEMBER me ON a.IDMEMBER = me.ID\r\n"
-					+ "    WHERE \r\n"
-					+ "        me.ID = ?\r\n"
-					+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '2' month AND to_date(sysdate, 'YY/MM/DD') - interval '1' month -- 2달 전부터 1달 전까지\r\n"
-					+ "        AND ai.seqDepositWithdrawalStatus = 2\r\n"
-					+ "    GROUP BY \r\n"
-					+ "        ac.name\r\n"
-					+ "    ORDER BY \r\n"
-					+ "        totalPrice DESC\r\n"
-					+ "    FETCH FIRST 1 ROW ONLY\r\n"
-					+ ")\r\n"
-					+ "SELECT \r\n"
-					+ "    mc.acName AS acName,\r\n"
-					+ "    MAX(totalPrice) AS beforeAcUsage,\r\n"
-					+ "    SUM(CASE WHEN ai.accInfoDate BETWEEN TRUNC(SYSDATE, 'MM') - INTERVAL '1' MONTH AND TRUNC(SYSDATE, 'MM') THEN ai.price ELSE 0 END) AS nowAcUsage\r\n"
-					+ "FROM \r\n"
-					+ "    tblaccinfo ai\r\n"
-					+ "    INNER JOIN TBLACCCATEGORYLIST acl ON ai.SEQ = acl.SEQACCINFO\r\n"
-					+ "    INNER JOIN TBLACCCATEGORY ac ON acl.SEQACCCATEGORY = ac.SEQ\r\n"
-					+ "    INNER JOIN TBLACC a ON ai.SEQACC = a.SEQ\r\n"
-					+ "    inner join max_category mc on mc.acName = ac.name\r\n"
-					+ "    INNER JOIN TBLMEMBER me ON a.IDMEMBER = me.ID\r\n"
-					+ "WHERE \r\n"
-					+ "    me.ID = ?\r\n"
-					+ "    AND ai.seqDepositWithdrawalStatus = 2\r\n"
-					+ "GROUP BY \r\n"
-					+ "    mc.acName";
-
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
-			pstat.setString(2, id);
-
-			rs = pstat.executeQuery();
-
-			AccountInfoDTO dto = new AccountInfoDTO();
-			
-			while (rs.next()) {
-				
-				dto.setBeforeAcUsage(rs.getInt("beforeAcUsage"));
-				dto.setNowAcUsage(rs.getInt("nowAcUsage"));
-				dto.setAcName(rs.getString("acName"));
-			}
-
-			return dto; 
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-	
-	// 가계부 분석 > 카테고리별 지출 비교
-	public HashMap<String, String> getComparisonCategoryUsage(String id) {
+		//목표 기간 안에 목표 금액을 저축하기 위해 매달 저축해야하는 평균
+		avgMonthlySavingsPrice = remainingSavings / (spPeriod - monthsSinceJoin);
 		
-		DecimalFormat formatter = new DecimalFormat("#,###");
+		//달 평균 사용 가능 금액
+		avgMonthlyUsablePrice = (monthSaving - monthUsage - totalfixedFluctuation) - avgMonthlySavingsPrice;
 		
-		HashMap<String, String> map = new HashMap<>();
-			
-		String acName = null;
+		//일 편귱 사용 가능 금액
+		avgDailyUsablePrice = avgMonthlyUsablePrice / lastDayOfMonth;
 		
-		int nowAcUsage = 0;
-		int beforeAcUsage = 0;
+		map.put("savingsGoals", formatter.format(savingsGoals));
+		map.put("totalSaving", formatter.format(totalSaving));
+		map.put("remainingSavings", formatter.format(remainingSavings));
+		map.put("avgMonthlySpending", formatter.format(avgMonthlySpending));
+		map.put("avgMonthlySavings", formatter.format(avgMonthlySavings));
+		map.put("goalAchievementPeriod", formatter.format(goalAchievementPeriod));
+		map.put("monthUsage", formatter.format(monthUsage));
 		
-		int nowMonthUsage = 0; // 이번달 지출
-		int beforeMonthUsage = 0; // 지난달 지출
+		map.put("spPeriod", formatter.format(spPeriod));
+		map.put("monthsSinceJoin", formatter.format(monthsSinceJoin));
 		
-		int now = 0;
-		int before = 0;
+		map.put("avgMonthlySavings", formatter.format(avgMonthlySavings));
+		map.put("avgMonthlySavingsPrice", formatter.format(avgMonthlySavingsPrice));
+		map.put("avgMonthlyUsablePrice", formatter.format(avgMonthlyUsablePrice));
+		map.put("avgDailyUsablePrice", formatter.format(avgDailyUsablePrice));
 		
-		AccountInfoDTO dto = getMaxUsageCategory(id);
-		HashMap<String, Integer> usageMap = getPeriodUsage(id);
-		
-		beforeAcUsage = dto.getBeforeAcUsage();
-		nowAcUsage = dto.getNowAcUsage();
-		acName = dto.getAcName();
-		
-		beforeMonthUsage = usageMap.get("beforeMonthUsage");
-		nowMonthUsage = usageMap.get("nowMonthUsage");
-		
-		before = beforeAcUsage / beforeMonthUsage;
-		now = nowAcUsage / nowMonthUsage;
-		
-		map.put("acName", acName);
-		
-		map.put("now", String.valueOf(formatter.format(now)));
-		map.put("before", String.valueOf(formatter.format(before)));
-		
-		map.put("beforeMonthUsage", String.valueOf(formatter.format(beforeMonthUsage)));
-		map.put("nowMonthUsage", String.valueOf(formatter.format(nowMonthUsage)));
-		
-		map.put("beforeAcUsage", String.valueOf(formatter.format(beforeAcUsage)));
-		map.put("nowAcUsage", String.valueOf(formatter.format(nowAcUsage)));
-		
-		map.put("gap", String.valueOf(formatter.format(before - now)));
-
 		return map;
+		
+	} catch (Exception e) {
+		System.out.println("AccountDAO.getChallenge");
+		e.printStackTrace();
 	}
 	
-	//뉴스 검색 시작
-	//가계부 분석 > 뉴스 불러오기
-//	public AccountInfoDTO getNews(String category) {
-//		
-//		return null;
-//	}
-	
-	public ArrayList<AccountInfoDTO> search(String category) {
-		UserDAO dao = new UserDAO();
-		HashMap<String, String> apiInfoMap = dao.getAPIKey("2");
+	return null;
 
-		// 돌려주기 위한 리스트
-		ArrayList<AccountInfoDTO> newsList = new ArrayList();
+}
 
-		String clientId = apiInfoMap.get("name"); // 애플리케이션 클라이언트 아이디
-		String clientSecret = apiInfoMap.get("key");
-		; // 애플리케이션 클라이언트 시크릿
+/**
+* 기간별 사용 금액을 조회하는 메서드입니다.
+* @param id 회원 아이디입니다.
+* @return 기간별 사용 금액을 담은 HashMap을 반환합니다.
+*/
+public HashMap<String, Integer> getPeriodUsage (String id) {
 
-		String word = "경제";
+	try {
+
+		String sql = "SELECT \r\n"
+				+ "    COALESCE(sub1.totalPrice, 0) beforeMonthUsage,\r\n"
+				+ "    COALESCE(sub2.totalPrice, 0) nowMonthUsage,\r\n"
+				+ "    COALESCE(sub1.idMember, sub2.idMember) idMember\r\n"
+				+ "FROM (\r\n"
+				+ "    -- 2달 전부터 1달 전까지의 사용 금액\r\n"
+				+ "    SELECT \r\n"
+				+ "        SUM(ai.price) AS totalPrice,\r\n"
+				+ "        me.ID AS idMember\r\n"
+				+ "    from tblaccinfo ai\r\n"
+				+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
+				+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
+				+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
+				+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
+				+ "    WHERE \r\n"
+				+ "        me.ID = ?\r\n"
+				+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '2' month AND to_date(sysdate, 'YY/MM/DD') - interval '1' month -- 2달 전부터 1달 전까지\r\n"
+				+ "        AND ai.seqDepositWithdrawalStatus = 2 -- 입출금 상태\r\n"
+				+ "    GROUP BY \r\n"
+				+ "        me.ID\r\n"
+				+ ") sub1\r\n"
+				+ "FULL OUTER JOIN (\r\n"
+				+ "    -- 1달 전부터 현재까지의 사용 금액\r\n"
+				+ "    SELECT \r\n"
+				+ "        SUM(ai.price) AS totalPrice,\r\n"
+				+ "        me.ID AS idMember\r\n"
+				+ "    from tblaccinfo ai\r\n"
+				+ "    inner join TBLACCCATEGORYLIST acl on ai.SEQ = acl.SEQACCINFO\r\n"
+				+ "    inner join TBLACCCATEGORY ac on acl.SEQACCCATEGORY = ac.SEQ\r\n"
+				+ "    inner join TBLACC a on ai.SEQACC = a.SEQ\r\n"
+				+ "    inner join TBLMEMBER me on a.IDMEMBER = me.ID\r\n"
+				+ "    WHERE \r\n"
+				+ "        me.ID = ?\r\n"
+				+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '1' month AND to_date(sysdate, 'YY/MM/DD') -- 1달 전부터 현재까지\r\n"
+				+ "        AND ai.seqDepositWithdrawalStatus = 2 -- 입출금 상태\r\n"
+				+ "    GROUP BY \r\n"
+				+ "        me.ID\r\n"
+				+ ") sub2 ON sub1.idMember = sub2.idMember";
 		
-		try {
-			category = URLEncoder.encode(category, "UTF-8");
-			word = URLEncoder.encode(word, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException("검색어 인코딩 실패", e);
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, id);
+		pstat.setString(2, id);
+
+		rs = pstat.executeQuery();
+
+		HashMap<String, Integer> map = new HashMap<>();
+		
+		while (rs.next()) {
+			
+			map.put("nowMonthUsage", rs.getInt("nowMonthUsage"));
+			map.put("beforeMonthUsage", rs.getInt("beforeMonthUsage"));
+			
 		}
 
-		String apiURL = "https://openapi.naver.com/v1/search/news?query=" + category + "+" + word + "&display=5&sort=date"; // JSON 결과
-		// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
-		// // XML 결과
+		return map; 
 
-		Map<String, String> requestHeaders = new HashMap<>();
-		requestHeaders.put("X-Naver-Client-Id", clientId);
-		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-		String responseBody = get(apiURL, requestHeaders);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 
-//		System.out.println(responseBody);
+	return null;
+}
 
-		// 파싱
+/**
+ * 최대 사용 카테고리를 조회하는 메서드입니다.
+ * @param id 회원 아이디입니다.
+ * @return 최대 사용 카테고리 정보를 담은 AccountInfoDTO 객체를 반환합니다.
+ */
+public AccountInfoDTO getMaxUsageCategory(String id) {
+
+	try {
+
+		String sql = "WITH max_category AS (\r\n"
+				+ "    SELECT \r\n"
+				+ "        ac.name AS acName,\r\n"
+				+ "        SUM(ai.price) AS totalPrice\r\n"
+				+ "    FROM \r\n"
+				+ "        tblaccinfo ai\r\n"
+				+ "        INNER JOIN TBLACCCATEGORYLIST acl ON ai.SEQ = acl.SEQACCINFO\r\n"
+				+ "        INNER JOIN TBLACCCATEGORY ac ON acl.SEQACCCATEGORY = ac.SEQ\r\n"
+				+ "        INNER JOIN TBLACC a ON ai.SEQACC = a.SEQ\r\n"
+				+ "        INNER JOIN TBLMEMBER me ON a.IDMEMBER = me.ID\r\n"
+				+ "    WHERE \r\n"
+				+ "        me.ID = ?\r\n"
+				+ "        AND ai.accInfoDate BETWEEN to_date(sysdate, 'YY/MM/DD') - interval '2' month AND to_date(sysdate, 'YY/MM/DD') - interval '1' month -- 2달 전부터 1달 전까지\r\n"
+				+ "        AND ai.seqDepositWithdrawalStatus = 2\r\n"
+				+ "    GROUP BY \r\n"
+				+ "        ac.name\r\n"
+				+ "    ORDER BY \r\n"
+				+ "        totalPrice DESC\r\n"
+				+ "    FETCH FIRST 1 ROW ONLY\r\n"
+				+ ")\r\n"
+				+ "SELECT \r\n"
+				+ "    mc.acName AS acName,\r\n"
+				+ "    MAX(totalPrice) AS beforeAcUsage,\r\n"
+				+ "    SUM(CASE WHEN ai.accInfoDate BETWEEN TRUNC(SYSDATE, 'MM') - INTERVAL '1' MONTH AND TRUNC(SYSDATE, 'MM') THEN ai.price ELSE 0 END) AS nowAcUsage\r\n"
+				+ "FROM \r\n"
+				+ "    tblaccinfo ai\r\n"
+				+ "    INNER JOIN TBLACCCATEGORYLIST acl ON ai.SEQ = acl.SEQACCINFO\r\n"
+				+ "    INNER JOIN TBLACCCATEGORY ac ON acl.SEQACCCATEGORY = ac.SEQ\r\n"
+				+ "    INNER JOIN TBLACC a ON ai.SEQACC = a.SEQ\r\n"
+				+ "    inner join max_category mc on mc.acName = ac.name\r\n"
+				+ "    INNER JOIN TBLMEMBER me ON a.IDMEMBER = me.ID\r\n"
+				+ "WHERE \r\n"
+				+ "    me.ID = ?\r\n"
+				+ "    AND ai.seqDepositWithdrawalStatus = 2\r\n"
+				+ "GROUP BY \r\n"
+				+ "    mc.acName";
+
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, id);
+		pstat.setString(2, id);
+
+		rs = pstat.executeQuery();
+
+		AccountInfoDTO dto = new AccountInfoDTO();
+		
+		while (rs.next()) {
+			
+			dto.setBeforeAcUsage(rs.getInt("beforeAcUsage"));
+			dto.setNowAcUsage(rs.getInt("nowAcUsage"));
+			dto.setAcName(rs.getString("acName"));
+		}
+
+		return dto; 
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	return null;
+}
+
+/**
+ * 카테고리별 지출 비교 정보를 조회하는 메서드입니다.
+ * @param id 회원 아이디입니다.
+ * @return 카테고리별 지출 비교 정보를 담은 HashMap을 반환합니다.
+ */
+public HashMap<String, String> getComparisonCategoryUsage(String id) {
+	
+	DecimalFormat formatter = new DecimalFormat("#,###");
+	
+	HashMap<String, String> map = new HashMap<>();
+		
+	String acName = null;
+	
+	int nowAcUsage = 0;
+	int beforeAcUsage = 0;
+	
+	int nowMonthUsage = 0; // 이번달 지출
+	int beforeMonthUsage = 0; // 지난달 지출
+	
+	int now = 0;
+	int before = 0;
+	
+	AccountInfoDTO dto = getMaxUsageCategory(id);
+	HashMap<String, Integer> usageMap = getPeriodUsage(id);
+	
+	beforeAcUsage = dto.getBeforeAcUsage();
+	nowAcUsage = dto.getNowAcUsage();
+	acName = dto.getAcName();
+	
+	beforeMonthUsage = usageMap.get("beforeMonthUsage");
+	nowMonthUsage = usageMap.get("nowMonthUsage");
+	
+	before = beforeAcUsage / beforeMonthUsage;
+	now = nowAcUsage / nowMonthUsage;
+	
+	map.put("acName", acName);
+	
+	map.put("now", String.valueOf(formatter.format(now)));
+	map.put("before", String.valueOf(formatter.format(before)));
+	
+	map.put("beforeMonthUsage", String.valueOf(formatter.format(beforeMonthUsage)));
+	map.put("nowMonthUsage", String.valueOf(formatter.format(nowMonthUsage)));
+	
+	map.put("beforeAcUsage", String.valueOf(formatter.format(beforeAcUsage)));
+	map.put("nowAcUsage", String.valueOf(formatter.format(nowAcUsage)));
+	
+	map.put("gap", String.valueOf(formatter.format(before - now)));
+
+	return map;
+}
+
+/**
+ * 뉴스 검색 결과를 조회하는 메서드입니다.
+ * @param category 검색할 카테고리입니다.
+ * @return 뉴스 검색 결과를 담은 ArrayList를 반환합니다.
+ */
+public ArrayList<AccountInfoDTO> search(String category) {
+	UserDAO dao = new UserDAO();
+	HashMap<String, String> apiInfoMap = dao.getAPIKey("2");
+
+	// 돌려주기 위한 리스트
+	ArrayList<AccountInfoDTO> newsList = new ArrayList();
+
+	String clientId = apiInfoMap.get("name"); // 애플리케이션 클라이언트 아이디
+	String clientSecret = apiInfoMap.get("key");
+	; // 애플리케이션 클라이언트 시크릿
+
+	String word = "경제";
+	
+	try {
+		category = URLEncoder.encode(category, "UTF-8");
+		word = URLEncoder.encode(word, "UTF-8");
+	} catch (UnsupportedEncodingException e) {
+		throw new RuntimeException("검색어 인코딩 실패", e);
+	}
+
+	String apiURL = "https://openapi.naver.com/v1/search/news?query=" + category + "+" + word + "&display=5&sort=date"; // JSON 결과
+	// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
+	// // XML 결과
+
+	Map<String, String> requestHeaders = new HashMap<>();
+	requestHeaders.put("X-Naver-Client-Id", clientId);
+	requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+	String responseBody = get(apiURL, requestHeaders);
+	
+//	System.out.println(responseBody);
+	// 파싱
 		JSONParser parser = new JSONParser();
 
 		try {
 			JSONObject root = (JSONObject) parser.parse(responseBody);
-
 //			System.out.println(root.get("total"));
 
 			JSONArray list = (JSONArray) root.get("items");
@@ -838,92 +927,107 @@ public class AccountDAO {
 	            Date pubDate = inputFormat.parse(pubDateStr);
 	            SimpleDateFormat outputFormat = new SimpleDateFormat("yy/MM/dd", Locale.ENGLISH);
 	            String formattedDate = outputFormat.format(pubDate);
-	            dto.setPubDate(formattedDate);	            
-	            
+	            dto.setPubDate(formattedDate);
 //				dto.setPubDate(((JSONObject)list.get(i)).get("pubDate").toString());
-				dto.setDescription(((JSONObject)list.get(i)).get("description").toString());
-
-				newsList.add(dto);
+dto.setDescription(((JSONObject)list.get(i)).get("description").toString());
+newsList.add(dto);
 			}
 
 			return newsList;
 
 		}
 			
-      catch (Exception e) {
+	  catch (Exception e) {
 		System.out.println("AccountDAO.search");
 		e.printStackTrace();
 	}
 		return null;
 	}
-	
-	
+
+	/**
+	 * API 요청을 수행하고 응답을 반환하는 메서드입니다.
+	 * @param apiUrl API URL입니다.
+	 * @param requestHeaders 요청 헤더입니다.
+	 * @return API 응답을 문자열로 반환합니다.
+	 */
 	private static String get(String apiUrl, Map<String, String> requestHeaders){
-        HttpURLConnection con = connect(apiUrl);
-        try {
-            con.setRequestMethod("GET");
-            for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
-                con.setRequestProperty(header.getKey(), header.getValue());
-            }
+	    HttpURLConnection con = connect(apiUrl);
+	    try {
+	        con.setRequestMethod("GET");
+	        for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
+	            con.setRequestProperty(header.getKey(), header.getValue());
+	        }
 
 
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
-                return readBody(con.getInputStream());
-            } else { // 오류 발생
-                return readBody(con.getErrorStream());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("API 요청과 응답 실패", e);
-        } finally {
-            con.disconnect();
-        }
-    }
+	        int responseCode = con.getResponseCode();
+	        if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+	            return readBody(con.getInputStream());
+	        } else { // 오류 발생
+	            return readBody(con.getErrorStream());
+	        }
+	    } catch (IOException e) {
+	        throw new RuntimeException("API 요청과 응답 실패", e);
+	    } finally {
+	        con.disconnect();
+	    }
+	}
+
+	/**
+	 * API에 연결하는 메서드입니다.
+	 * @param apiUrl API URL입니다.
+	 * @return HttpURLConnection 객체를 반환합니다.
+	 */
+	private static HttpURLConnection connect(String apiUrl){
+	    try {
+	        URL url = new URL(apiUrl);
+	        return (HttpURLConnection)url.openConnection();
+	    } catch (MalformedURLException e) {
+	    throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
+	    } catch (IOException e) {
+	    throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
+	    }
+	    }
+	/**
+	 * API 응답을 읽는 메서드입니다.
+	 * @param body InputStream 객체입니다.
+	 * @return 응답 내용을 문자열로 반환합니다.
+	 */
+	private static String readBody(InputStream body){
+	    InputStreamReader streamReader = new InputStreamReader(body);
 
 
-    private static HttpURLConnection connect(String apiUrl){
-        try {
-            URL url = new URL(apiUrl);
-            return (HttpURLConnection)url.openConnection();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
-        } catch (IOException e) {
-            throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
-        }
-    }
+	    try (BufferedReader lineReader = new BufferedReader(streamReader)) {
+	        StringBuilder responseBody = new StringBuilder();
 
 
-    private static String readBody(InputStream body){
-        InputStreamReader streamReader = new InputStreamReader(body);
+	        String line;
+	        while ((line = lineReader.readLine()) != null) {
+	            responseBody.append(line);
+	        }
 
 
-        try (BufferedReader lineReader = new BufferedReader(streamReader)) {
-            StringBuilder responseBody = new StringBuilder();
+	        return responseBody.toString();
+	    } catch (IOException e) {
+	        throw new RuntimeException("API 응답을 읽는 데 실패했습니다.", e);
+	    }
+	}
 
-
-            String line;
-            while ((line = lineReader.readLine()) != null) {
-                responseBody.append(line);
-            }
-
-
-            return responseBody.toString();
-        } catch (IOException e) {
-            throw new RuntimeException("API 응답을 읽는 데 실패했습니다.", e);
-        }
-    }
-	//뉴스 검색 끝
-    
-	
-	//비용 수익 읽기(카테고리, 그래프 모양, 기간을 map으로 받아서 사용?)
+	/**
+	 * 비용과 수익을 조회하는 메서드입니다.
+	 * @param dto 조회에 필요한 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 비용과 수익 조회 결과를 반환합니다.
+	 */
 	public int costRevenue(AccountInfoDTO dto) {
 		
 		return 0;
 	}
-	
-	
 
-	//카드 사용 읽기
+	/**
+	 * 카드 사용 내역을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @param map 조회 조건을 담은 HashMap 객체입니다.
+	 * @return 카드 사용 내역을 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> list(String id, HashMap<String, String> map) {
 		
 		try {
@@ -990,8 +1094,13 @@ public class AccountDAO {
 		return null;
 		
 	}
-	
-	//특정 카드 사용 읽기
+
+	/**
+	 * 특정 카드의 사용 내역을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @param map 조회 조건을 담은 HashMap 객체입니다.
+	 * @return 특정 카드의 사용 내역을 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> getCardUsageDetails(String id, HashMap<String, String> map) {
 
 		try {
@@ -1078,7 +1187,10 @@ public class AccountDAO {
 		return null;
 	}
 
-	//카테고리 목록 불러오기
+	/**
+	 * 카테고리 목록을 가져오는 메서드입니다.
+	 * @return 카테고리 목록을 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> getCategory() {
 		
 		try {
@@ -1109,6 +1221,12 @@ public class AccountDAO {
 		return null;
 	}
 
+	/**
+	 * 가계부 이벤트 내용을 조회하는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @param map 검색 조건을 담은 HashMap 객체입니다.
+	 * @return 가계부 이벤트 내용을 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> accEventContent(String id, HashMap<String, String> map) {
 		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
 		try {
@@ -1175,11 +1293,9 @@ public class AccountDAO {
 				dto.setPaymentMethod(rs.getString("paymentmethod"));
 				dto.setAlias(rs.getString("name"));
 				dto.setCardNumber(rs.getString("cardnumber"));
-				
 				list.add(dto);
 			}
 //			System.out.println("run");
-			
 			return list;
 		} catch (Exception e) {
 			System.out.println("AccountDAO.accEventContent");
@@ -1188,6 +1304,11 @@ public class AccountDAO {
 		return list;
 	}
 
+	/**
+	 * 가계부 이벤트를 추가하는 메서드입니다.
+	 * @param dto 가계부 이벤트 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 가계부 이벤트 추가 결과를 반환합니다.
+	 */
 	public int addEvent(AccountInfoDTO dto) {
 		
 		try {
@@ -1244,6 +1365,11 @@ public class AccountDAO {
 		return 0;
 	}
 
+	/**
+	 * 사용자의 카드 정보를 가져오는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 사용자의 카드 정보를 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> getmycards(String id) {
 		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
 		try {
@@ -1279,7 +1405,11 @@ public class AccountDAO {
 		return null;
 	}
 
-
+	/**
+	 * 가계부를 업데이트하는 메서드입니다.
+	 * @param dto 업데이트할 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 업데이트 결과를 반환합니다.
+	 */
 	public int updateAcc(AccountInfoDTO dto) {
 		
 		try {
@@ -1319,6 +1449,11 @@ public class AccountDAO {
 		return 0;
 	}
 
+	/**
+	 * 가계부를 삭제하는 메서드입니다.
+	 * @param dto 삭제할 가계부 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 삭제 결과를 반환합니다.
+	 */
 	public int delAcc(AccountInfoDTO dto) {
 		
 		try {
@@ -1350,6 +1485,11 @@ public class AccountDAO {
 		return 0;
 	}
 
+	/**
+	 * 사용자의 위시리스트를 가져오는 메서드입니다.
+	 * @param id 회원 아이디입니다.
+	 * @return 사용자의 위시리스트를 담은 ArrayList를 반환합니다.
+	 */
 	public ArrayList<AccountInfoDTO> mywishlist(String id) {
 		ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
 		try {
@@ -1379,6 +1519,11 @@ public class AccountDAO {
 		return null;
 	}
 
+	/**
+	 * 위시리스트에 항목을 추가하는 메서드입니다.
+	 * @param dto 추가할 위시리스트 항목 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 추가 결과를 반환합니다.
+	 */
 	public int addlist(AccountInfoDTO dto) {
 		
 		try {
@@ -1404,7 +1549,11 @@ public class AccountDAO {
 		return 0;
 	}
 
-
+	/**
+	 * 위시리스트에서 항목을 삭제하는 메서드입니다.
+	 * @param dto 삭제할 위시리스트 항목 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 삭제 결과를 반환합니다.
+	 */
 	public int delwishlist(AccountInfoDTO dto) {
 		
 		try {
@@ -1428,6 +1577,11 @@ public class AccountDAO {
 		return 0;
 	}
 
+	/**
+	 * 고정 지출 이벤트를 추가하는 메서드입니다.
+	 * @param dto 추가할 고정 지출 이벤트 정보를 담은 AccountInfoDTO 객체입니다.
+	 * @return 추가된 고정 지출 이벤트의 시퀀스 번호를 반환합니다.
+	 */
 	public int fixedevent(AccountInfoDTO dto) {
 		try {
 			
@@ -1462,6 +1616,12 @@ public class AccountDAO {
 		return 0;
 	}
 
+	/**
+	 * 변경 사유 카테고리를 생성하는 메서드입니다.
+	 * @param paycontentseq 변경 사유 목록의 시퀀스 번호입니다.
+	 * @param cardNum 카드 번호입니다.
+	 * @return 생성 결과를 반환합니다.
+	 */
 	public int makercc(int paycontentseq, String cardNum) {
 		try {
 			
@@ -1478,96 +1638,92 @@ public class AccountDAO {
 				
 				if(rs.next()) {
 					cardSeq = rs.getString("seq");
-					System.out.println("cardseq: "+cardSeq);
-				}
-			
-			}
-			
+					System.out.println("cardseq: "+cardSeq );
+                }
+            }
 			if(cardSeq != null) {
-				sql = "INSERT INTO TBLREASONCHANGECATEGORY (SEQ, SEQREASONSCHANGELIST, SEQMYCARD) VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM TBLREASONCHANGECATEGORY), ?, ?)";
-				pstat = conn.prepareStatement(sql);
-				pstat.setInt(1, paycontentseq);
-				pstat.setInt(2, Integer.parseInt(cardSeq));
-			}else {
-				sql = "INSERT INTO TBLREASONCHANGECATEGORY (SEQ, SEQREASONSCHANGELIST, SEQMYCARD) VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM TBLREASONCHANGECATEGORY), ?, null)";
-				pstat = conn.prepareStatement(sql);
-				pstat.setInt(1, paycontentseq);
-			}
-			
-			int indicate = pstat.executeUpdate();			
-			
-			System.out.println("rcc finsih");
-			return indicate;
-			
-		} catch (Exception e) {
-			System.out.println("AccountDAO.makercc");
-			e.printStackTrace();
-		}
-		
-		
-		return 0;
-	}
+                sql = "INSERT INTO TBLREASONCHANGECATEGORY (SEQ, SEQREASONSCHANGELIST, SEQMYCARD) VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM TBLREASONCHANGECATEGORY), ?, ?)";
+                pstat = conn.prepareStatement(sql);
+                pstat.setInt(1, paycontentseq);
+                pstat.setInt(2, Integer.parseInt(cardSeq));
+            } else {
+                sql = "INSERT INTO TBLREASONCHANGECATEGORY (SEQ, SEQREASONSCHANGELIST, SEQMYCARD) VALUES ((SELECT NVL(MAX(seq), 0) + 1 FROM TBLREASONCHANGECATEGORY), ?, null)";
+                pstat = conn.prepareStatement(sql);
+                pstat.setInt(1, paycontentseq);
+            }
+            
+            int indicate = pstat.executeUpdate();            
+            
+            System.out.println("rcc finsih");
+            return indicate;
+            
+        } catch (Exception e) {
+            System.out.println("AccountDAO.makercc");
+            e.printStackTrace();
+        }
+        
+        
+        return 0;
+    }
 
-	public int dupEvent(AccountInfoDTO dto) {
-		
-		try {
-			
-			System.out.println("dup start");
-			String sql = "select seq from tblaccinfo where SEQFIXEDFLUCTUATIONCHECK = ?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setInt(1, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
-			
-			rs = pstat.executeQuery();
-			
-			if(rs.next()) {
-				dto.setSeqAccInfo(String.valueOf(rs.getInt("seq")));
-			}
-			sql = "select SEQREASONCHANGECATEGORY from tblaccinfo where SEQFIXEDFLUCTUATIONCHECK = ?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setInt(1, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
-			
-			rs = pstat.executeQuery();
-			
-			if(rs.next()) {
-				dto.setSeqReasonChangeCategory(String.valueOf(rs.getInt("SEQREASONCHANGECATEGORY")));
-			}
-			
-			sql ="call insert_interval_entries(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			pstat = conn.prepareStatement(sql);
-			
-			pstat.setInt(1,Integer.parseInt(dto.getSeqAccInfo()));			
-			pstat.setString(2, dto.getContent());
-			String dateString = dto.getAccInfoDate();
-			java.sql.Date sqlDate = java.sql.Date.valueOf(dateString);
-			System.out.println("sqlDate: "+sqlDate);
-			pstat.setDate(3, sqlDate);
-			pstat.setInt(4, dto.getPrice());
-			pstat.setString(5, dto.getLocation());
-			pstat.setInt(6, Integer.parseInt(dto.getSeqAcc()));
-			pstat.setInt(7, Integer.parseInt(dto.getSeqReasonChangeCategory()));
-			pstat.setInt(8, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
-			pstat.setInt(9, Integer.parseInt(dto.getSeqDepositWithdrawalStatus()));
-			pstat.setInt(10, Integer.parseInt(dto.getSeqAccCategory()));
-			int indicate = pstat.executeUpdate();			
-			System.out.println("proc indicate: "+indicate);
-			
-			return indicate;
-			
-		} catch (Exception e) {
-			System.out.println("AccountDAO.dupEvent");
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
-
-
-	
-	  
+    /**
+     * 중복 이벤트를 처리하는 메서드입니다.
+     * @param dto 중복 이벤트 정보를 담은 AccountInfoDTO 객체입니다.
+     * @return 처리 결과를 반환합니다.
+     */
+    public int dupEvent(AccountInfoDTO dto) {
+        
+        try {
+            
+            System.out.println("dup start");
+            String sql = "select seq from tblaccinfo where SEQFIXEDFLUCTUATIONCHECK = ?";
+            
+            pstat = conn.prepareStatement(sql);
+            pstat.setInt(1, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
+            
+            rs = pstat.executeQuery();
+            
+            if(rs.next()) {
+                dto.setSeqAccInfo(String.valueOf(rs.getInt("seq")));
+            }
+            sql = "select SEQREASONCHANGECATEGORY from tblaccinfo where SEQFIXEDFLUCTUATIONCHECK = ?";
+            
+            pstat = conn.prepareStatement(sql);
+            pstat.setInt(1, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
+            
+            rs = pstat.executeQuery();
+            
+            if(rs.next()) {
+                dto.setSeqReasonChangeCategory(String.valueOf(rs.getInt("SEQREASONCHANGECATEGORY")));
+            }
+            
+            sql ="call insert_interval_entries(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            pstat = conn.prepareStatement(sql);
+            
+            pstat.setInt(1,Integer.parseInt(dto.getSeqAccInfo()));            
+            pstat.setString(2, dto.getContent());
+            String dateString = dto.getAccInfoDate();
+            java.sql.Date sqlDate = java.sql.Date.valueOf(dateString);
+            System.out.println("sqlDate: "+sqlDate);
+            pstat.setDate(3, sqlDate);
+            pstat.setInt(4, dto.getPrice());
+            pstat.setString(5, dto.getLocation());
+            pstat.setInt(6, Integer.parseInt(dto.getSeqAcc()));
+            pstat.setInt(7, Integer.parseInt(dto.getSeqReasonChangeCategory()));
+            pstat.setInt(8, Integer.parseInt(dto.getSeqFixedFluctuationCheck()));
+            pstat.setInt(9, Integer.parseInt(dto.getSeqDepositWithdrawalStatus()));
+            pstat.setInt(10, Integer.parseInt(dto.getSeqAccCategory()));
+            int indicate = pstat.executeUpdate();            
+            System.out.println("proc indicate: "+indicate);
+            
+            return indicate;
+            
+        } catch (Exception e) {
+            System.out.println("AccountDAO.dupEvent");
+            e.printStackTrace();
+        }
+        
+        return 0;
+    }
+  
 }
-
-
-	
-	  

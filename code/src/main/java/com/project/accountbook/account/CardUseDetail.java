@@ -45,14 +45,14 @@ public class CardUseDetail extends HttpServlet {
 		map.put("seqMyCard", seqMyCard);
 		map.put("startDate", startDate);
 		map.put("endDate", endDate);
-		
+				
 		AccountDAO dao = new AccountDAO();
 		
 		ArrayList<AccountInfoDTO> list = dao.getCardUsageDetails(id, map);
-		
+				
 		req.setAttribute("list", list);
 		req.setAttribute("map", map);
-    
+		req.setAttribute("seqMyCard", seqMyCard);    
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/account/card-use-detail.jsp");
 		dispatcher.forward(req, resp);

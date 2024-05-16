@@ -570,7 +570,7 @@ public class AccountDAO {
 			int lastDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 					
 			String accInfoDate = null;
-			int price = 0; //고정 지출 금액
+			long price = 0; //고정 지출 금액
 			int ffpPeriod = 0; //고정 지출 간격
 			int totalfixedFluctuation = 0; //고청 지출 총 합
 			
@@ -1045,7 +1045,9 @@ newsList.add(dto);
 	                + "from tblAccInfo ai\r\n"
 	                + "    inner join tblReasonChangeCategory rcc \r\n"
 	                + "        on rcc.seq = ai.seqReasonChangeCategory\r\n"
-	                + "            inner join tblMyCard mc \r\n"
+	                + "            inner join tblMyCard "
+	                + ""
+	                + "mc \r\n"
 	                + "                on mc.seq = rcc.seqMyCard\r\n"
 	                + "                    inner join tblCardInformation cf \r\n"
 	                + "                        on cf.seq = mc.seqCardInformation\r\n"
@@ -1075,7 +1077,7 @@ newsList.add(dto);
 				
 				AccountInfoDTO dto = new AccountInfoDTO();
 				
-				dto.setTotalPrice(rs.getInt("totalPrice"));
+				dto.setTotalPrice(rs.getLong("totalPrice"));
 				dto.setAlias(rs.getString("alias"));
 				dto.setCfName(rs.getString("cfName"));
 				dto.setFileLink(rs.getString("fileLink"));
@@ -1107,8 +1109,7 @@ newsList.add(dto);
 			
 			String seqMyCard = map.get("seqMyCard");
 			String startDate = map.get("startDate");
-		    String endDate = map.get("endDate");
-		    
+		    String endDate = map.get("endDate");		    
 			
 			String sql = "select \r\n"
 					+ "ai.accInfoDate accInfoDate, --날짜\r\n"
@@ -1146,19 +1147,23 @@ newsList.add(dto);
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
+			System.out.println("id: " + id);
 			
 			 // 시작일과 종료일이 둘 다 비어 있지 않은 경우에만 파라미터로 설정
 	        if (startDate != null && !startDate.isEmpty() && endDate != null && !endDate.isEmpty()) {
 	            pstat.setString(2, startDate);
 	            pstat.setString(3, endDate);
 	            pstat.setString(4, seqMyCard);
+	            System.out.println("startDate: " + startDate);
+	            System.out.println("endDate: " + endDate);
+	            System.out.println("seqMyCard: " + seqMyCard);
 	        } else {
 	        	pstat.setString(2, seqMyCard);
 	        }
 	        
 			
 			rs = pstat.executeQuery();
-			
+						
 			ArrayList<AccountInfoDTO> list = new ArrayList<AccountInfoDTO>();
 			
 			while (rs.next()) {
@@ -1166,7 +1171,7 @@ newsList.add(dto);
 				AccountInfoDTO dto = new AccountInfoDTO();
 				
 				dto.setAccInfoDate(rs.getString("accInfoDate"));
-				dto.setPrice(rs.getInt("price"));
+				dto.setPrice(rs.getLong("price"));
 				dto.setAcName(rs.getString("acName"));
 				dto.setLocation(rs.getString("location"));
 				dto.setSeqDepositWithdrawalStatus(rs.getString("seqDepositWithdrawalStatus"));
@@ -1331,7 +1336,7 @@ newsList.add(dto);
 
 		        pstat.setString(1, dto.getContent());
 		        pstat.setString(2, dto.getAccInfoDate());
-		        pstat.setInt(3, dto.getPrice());
+		        pstat.setLong(3, dto.getPrice());
 		        pstat.setString(4, dto.getLocation());
 		        pstat.setInt(5, Integer.parseInt(dto.getSeqAcc()));
 		        pstat.setInt(6, 2);
@@ -1419,7 +1424,7 @@ newsList.add(dto);
 	        pstat = conn.prepareStatement(sql);
 	        pstat.setString(1, dto.getContent());
 	        pstat.setString(2, dto.getAccInfoDate());
-	        pstat.setInt(3, dto.getPrice());
+	        pstat.setLong(3, dto.getPrice());
 	        pstat.setString(4, dto.getLocation());
 	        pstat.setInt(5, Integer.parseInt(dto.getSeqAcc()));
 	        pstat.setInt(6, Integer.parseInt(dto.getSeqReasonChangeCategory()));
@@ -1706,7 +1711,7 @@ newsList.add(dto);
             java.sql.Date sqlDate = java.sql.Date.valueOf(dateString);
             System.out.println("sqlDate: "+sqlDate);
             pstat.setDate(3, sqlDate);
-            pstat.setInt(4, dto.getPrice());
+            pstat.setLong(4, dto.getPrice());
             pstat.setString(5, dto.getLocation());
             pstat.setInt(6, Integer.parseInt(dto.getSeqAcc()));
             pstat.setInt(7, Integer.parseInt(dto.getSeqReasonChangeCategory()));

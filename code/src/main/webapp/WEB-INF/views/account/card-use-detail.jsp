@@ -4,16 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BudgetBuddy | 
-<c:forEach items="${list}" var="dto">
-		<c:if test="${dto.alias != null}">
-		${dto.alias}
-		</c:if>
-		<c:if test="${dto.alias == null}">
-		${dto.cfName}
-		</c:if>
-</c:forEach>
- 카드 사용 내역</title>
+<title>BudgetBuddy | 카드 사용 내역</title>
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -75,19 +66,10 @@
 	<div class="content-total-style">
 			<div class="content-header">
 					<div class="content-title-style">
-					<h3>
-							<c:forEach items="${list}" var="dto">
-								<c:if test="${dto.alias != null}">
-		${dto.alias}
-		</c:if>
-								<c:if test="${dto.alias == null}">
-		${dto.cfName}
-		</c:if>
-							</c:forEach>
-							카드 사용 내역
-					</h3></div>
-					
+						<h3>카드 사용 내역</h3>
+					</div>
 					<form id="selectDateForm" method="GET">
+					<input type="hidden" name="seqMyCard" id="seqMyCard" value="${seqMyCard}">
 						<div class="date-range-total-box">
 							<div class="date-range-box">
 								<div class="date-select-input-label">
@@ -148,6 +130,7 @@
 
 
 			<!-- fakecontent 끝 -->
+    </div>
     </div>
     </div>
 

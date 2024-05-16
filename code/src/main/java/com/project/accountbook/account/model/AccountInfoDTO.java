@@ -23,7 +23,7 @@ public class AccountInfoDTO {
     /**
      * 가격입니다.
      */
-    private int price;
+    private long price;
     
     /**
      * 위치입니다.
@@ -73,12 +73,12 @@ public class AccountInfoDTO {
     /**
      * 총 가격입니다.
      */
-    private int totalPrice;
+    private long totalPrice;
     
     /**
      * 총 저축액입니다.
      */
-    private int totalSaving;
+    private long totalSaving;
 
     //가계부
     /**

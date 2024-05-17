@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.accountbook.card.model.CardDTO;
 import com.project.accountbook.card.repository.CardDAO;
 
+
+
 /**
  * 카드 추천 목록을 처리하는 서블릿입니다.
  * 선택한 카테고리에 해당하는 카드 목록을 가져와 화면에 표시합니다.
@@ -20,6 +22,9 @@ import com.project.accountbook.card.repository.CardDAO;
 @WebServlet("/card/recommendation-list.do")
 public class RecommendationList extends HttpServlet {
 
+	
+	
+	
     private static final String[] CATEGORIES = {
             "모든가맹점", "교통", "주유", "통신", "마트/편의점", "쇼핑", "푸드", "카페/디저트", "뷰티/피트니스",
             "무실적", "공과금/렌탈", "병원/약국", "애완동물", "교육/육아", "자동차/하이패스",
@@ -40,7 +45,9 @@ public class RecommendationList extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String category = req.getParameter("category");
         System.out.println("Selected Category: " + category); // 선택한 카테고리 값 출력
-
+        
+        
+        
         if (category == null || category.isEmpty()) {
             category = "통신";
         }

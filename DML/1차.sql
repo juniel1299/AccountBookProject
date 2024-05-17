@@ -108,14 +108,7 @@ insert into tblSavingsPeriod (seq, period) values (78, 78);
 insert into tblSavingsPeriod (seq, period) values (79, 79);
 insert into tblSavingsPeriod (seq, period) values (80, 80);
 
---API tblAPI
-insert into tblAPI (seq, name, key) values (1, '카카오', '91bcd7b2be9455e375ffd22202e60b3a');
-insert into tblAPI (seq, name, key) values (2, 'zL0SIXEJSU8QAb42iEVc', '0ydDKRI9Hn');
-commit;
-select 
-*
-from tblAPI
-where seq = 2;
+--API tblAPI(삭제)
 
 -- 입출금 상태 tblDepositWithdrawalStatus
 insert into tblDepositWithdrawalStatus (seq, status) values (1, '입금');

@@ -76,6 +76,7 @@
 |<img src="https://avatars.githubusercontent.com/u/155717265?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/156043182?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/62318700?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/88925213?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/128907052?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/37370079?v=4" width="150" height="150"/>|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |[@Kim0f85](https://github.com/Kim0f85)|SXNGJUNHX<br/>[@SXNGJUNHX](https://github.com/SXNGJUNHX)|juniel1299<br/>[@juniel1299](https://github.com/juniel1299)|zin<br/>[@zzzzzzin](https://github.com/zzzzzzin)|[@VVjD](https://github.com/VVjD)|[@sungken](https://github.com/sungken)|
+|김수홍|송준호|장원준|정유진|정혜정|지성근|
 |가계부 CRUD|게시판 페이지|로그인 및 회원가입 관련 기능|개인정보 관리|대시보드(가계부 분석,목록/카드 사용 내역|게시판 작성|
 |가계부 목록|게시판 CRUD|세션 및 쿠키 기능|게시판 이용 내역|마이페이지(친구초대)|게시판 조회|
 |가계부 달력|게시판 검색 및 페이징|카드 추천 관련 기능 및 알고리즘|마이페이지 프론트|비밀번호 찾기/재설정|더미 데이터 생성|

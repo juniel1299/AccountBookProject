@@ -42,8 +42,13 @@
 
 <hr/>
 
-## :mag: API <br/>
-1. 
+## :mag: API , SMTP<br/>
+<div> <a href="https://developers.kakao.com/docs/latest/ko/message/js-link"> 1. 카카오톡 : 친구 초대 API </a>  </div>
+<div> 더 많은 유저의 유입을 위해 카카오톡을 통한 친구 초대 API 를 이용하였습니다.</div>
+<div> <a href="https://developers.naver.com/docs/serviceapi/search/news/news.md"> 2. 네이버 : 뉴스 검색 API </div>
+<div> 해당 프로젝트에서 가계부 사용 내역을 기반으로 관련 뉴스를 추천하는 내용을 네이버 뉴스 검색 API를 통해 진행하였습니다.</div>
+<div> <a href="https://support.google.com/a/answer/176600?hl=ko"> 3. Gmail SMTP </a> </div>
+<div> 해당 프로젝트에서 계정의 비밀번호 찾기를 진행하게 되면 해당 계정의 이메일로 메일이 전송되는데 해당 기능을 구현하기 위해 Gmail의 SMTP를 사용하였습니다.</div>
 
   <hr/>
 

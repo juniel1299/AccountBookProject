@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 상세보기</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/combine.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="post-box">
+      <h2>제목</h2>
+      <div class="post-header">
+        <img class="user-image" src="user-image.jpg" alt="사용자 이미지">
+        <div class="post-info">
+          <span>작성자: 회원 아이디</span>
+          <span>등록일: 2024.04.25.(수)</span>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>작성글</p>
+      </div>
+      <div class="post-actions">
+        <span><i class="material-icons">thumb_up</i> 100</span>
+        <span><i class="material-icons">thumb_down</i> 10</span>
+        <span><i class="material-icons">report</i> 신고</span>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comment-box">
+        <div class="post-header">
+          <img class="user-image" src="user-image.jpg" alt="사용자 이미지">
+          <div class="post-info">
+            <span>작성자: 회원 아이디</span>
+            <span>등록일: 2024.04.25.(수)</span>
+          </div>
+        </div>
+        <div class="post-content">
+          <p>댓글 내용</p>
+        </div>
+        <div class="post-actions">
+          <span><i class="material-icons">thumb_up</i> 5</span>
+          <span><i class="material-icons">thumb_down</i> 1</span>
+          <span><i class="material-icons">report</i> 신고</span>
+          <span>답글</span>
+        </div>
+      </div>
+      <div class="comment-box comment-reply">
+        <div class="post-header">
+          <i class="material-icons">subdirectory_arrow_right</i>
+          <img class="user-image" src="user-image.jpg" alt="사용자 이미지">
+          <div class="post-info">
+            <span>작성자: 회원 아이디</span>
+            <span>등록일: 2024.04.25.(수)</span>
+          </div>
+        </div>
+        <div class="post-content">
+          <p>답글 내용</p>
+        </div>
+        <div class="post-actions">
+          <span><i class="material-icons">thumb_up</i> 2</span>
+          <span><i class="material-icons">thumb_down</i> 0</span>
+          <span><i class="material-icons">report</i> 신고</span>
+        </div>
+      </div>
+    </div>
+    <div class="comment-form">
+      <textarea placeholder="댓글을 입력하세요."></textarea>
+      <button type="submit">댓글 등록</button>
+    </div>
+  </div>
+</body>
+</html>

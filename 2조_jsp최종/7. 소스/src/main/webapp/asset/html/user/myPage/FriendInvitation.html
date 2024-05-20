@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 페이지</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/combine.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    
+</style>
+<body>
+    <div class="container-friendinvite">
+        <div class="image-container-friendinvite">
+            <!-- 이미지를 여기에 추가하세요 -->
+            <img src="../images/image1.jpg" alt="이미지">
+        </div>
+        <div class="text-container-friendinvite">
+            <!-- 글을 여기에 추가하세요 -->
+            <p>쌈@뽕한 가계부 사이트를 친구에게 추천해보세요</p>
+        </div>
+        <div class="button-container-friendinvite">
+            <button id="shareButton-friendinvite">공유하기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    
+    document.getElementById('shareButton-friendinvite').addEventListener('click', function() {
+    // 공유하기 버튼 클릭 시 실행될 코드를 여기에 추가하세요.
+    alert('공유하기 버튼이 클릭되었습니다!');
+});
+</script>
+</html>

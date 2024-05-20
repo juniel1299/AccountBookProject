@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>비밀번호 찾기</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+      /* body { 
+        color: black;
+      } */
+      .card-findpw {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        width: 500px;
+        height: 400px;
+        background-color: #AAAAAA;
+      }
+      .card-body-findpw {
+        color: black; 
+      }
+
+      .find {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .find-pw-sucess, .find-pw-fail {
+        background-color: #d9d9d9;
+        margin: auto;
+        text-align: center;
+        width: 300px;
+        padding: 5px;
+      }
+
+    .find-pw-fail {
+      visibility: hidden;
+    }
+    .find-pw-close {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .find-pw-close-btn {
+      align-items: end;
+      border: none;
+      width: 50px;
+      height: 30px;
+    }
+    
+      
+      
+      </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card-findpw col-lg-4 mx-auto">
+              <div class="card-body-findpw px-5 py-5">
+                <div class="find">
+                    <div class="find-pw-sucess">이메일 전송이 성공하였습니다.</div>
+                    <div class="find-pw-fail">이메일 전송이 실패하였습니다.</div>
+                </div>
+                <div class="find-pw-close">
+                  <button class="find-pw-close-btn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- row ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+  </body>
+</html>

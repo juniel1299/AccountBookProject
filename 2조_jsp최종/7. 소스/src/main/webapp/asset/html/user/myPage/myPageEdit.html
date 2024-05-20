@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myPage Edit</title>
+</head>
+<link rel="stylesheet" href="../../../css/combine.css">
+<style>
+    
+
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<body>
+    <div class="myPage">
+        <div class="user-profile">
+            <div class="user-profile-img-container">
+                <button type="submit" class="material-symbols-outlined" id="editImgIcon">
+                    edit
+                </button>
+                <div class="user-profile-img">
+                    <span>개인 프로필 이미지</span>
+                </div>
+            </div>
+            <form class="user-profile-container">
+                <div class="user-profile-name">
+                    <div class="user-profile-name-title">이름</div>
+                    <div class="user-profile-name-edit">
+                        <input type="text" class="user-profile-name-real"></input>
+                    </div>
+                </div>
+                <div class="user-profile-nickname">
+                    <div class="user-profile-nickname-title">닉네임</div>
+                    <div class="user-profile-nickname-edit">
+                        <input type="text" class="user-profile-nickname-real"></input>
+                        <button type="submit" class="user-profile-nickname-duplicate">중복확인</button>
+                    </div>
+                </div>
+                <div class="user-profile-sex">
+                    <div class="user-profile-sex-title">성별</div>
+                    <div class="user-profile-sex-edit">
+                        <input type="radio" id="user-profile-sex-male" name="gender" class="user-profile-sex-choice">
+                        <label for="male">남자</label><br>
+                        <input type="radio" id="user-profile-sex-female" name="gender" class="user-profile-sex-choice">
+                        <label for="female">여자</label><br>
+                    </div>
+                </div>
+                <div class="user-profile-phone">
+                    <div class="user-profile-phone-title">전화번호</div>
+                    <div class="user-profile-phone-edit">
+                        <input type="text" class="user-profile-phone-real"></input>
+                        <button type="submit" class="user-profile-phone-duplicate">중복확인</button>
+                    </div>
+                </div>
+                <div class="saveBtn">
+                    <button type="submit">저장하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

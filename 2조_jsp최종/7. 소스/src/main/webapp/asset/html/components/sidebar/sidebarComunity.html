@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .sidebar {
+      margin-top:60px;
+      width: 230px;
+      background-color: #333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .logo {
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #444;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-icon {
+      margin-top:60px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-icon.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-icon i {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .close-icon {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+    }
+
+    .close-icon i {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    nav li:last-child {
+      border-bottom: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav a i {
+      margin-right: 10px;
+    }
+    .submenu {
+      margin:20px;
+    }
+  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="menu-icon">
+    <i class="material-icons">menu</i>
+  </div>
+
+  <div class="sidebar">
+    <div class="logo">
+      이미지
+      <div class="close-icon">
+        <i class="material-icons">close</i>
+      </div>
+    </div>
+    <nav>
+      <ul>
+            <li class="dropdown">
+              <a href="#"><i class="fas fa-home"></i> 가계부</a>
+              <ul class="submenu">
+                <li><a href="#">달력</a></li>
+                <li><a href="#">목록</a></li>
+                <li><a href="#">분석</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-tachometer-alt"></i> 비용수익</a>
+            </li>
+            <li  class="dropdown">
+              <a href="#"><i class="fas fa-shopping-cart"></i> 자산</a>
+              <ul class="submenu">
+                <li><a href="#">자산부채</a></li>
+                <li><a href="#">자산변동</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-user"></i> 카드사용</a>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+</body>
+
+<script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  const sidebar = document.querySelector('.sidebar');
+
+  menuIcon.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    menuIcon.classList.add('hidden');
+  });
+
+  closeIcon.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    menuIcon.classList.remove('hidden');
+  });
+</script>
+</html>
+

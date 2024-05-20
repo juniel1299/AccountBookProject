@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자산 및 부채 관리</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/combine.css">
+
+</head>
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+    
+</style>
+<body>
+    <div class="container-pl">
+        <h1 id="h1-pl">자산 및 부채 관리</h1>
+        <div class="blocks">
+            <div class="block asset">
+                <h2>자산</h2>
+                <p id="assetValue"></p>
+                <button class="add-button" data-modal="assetModal">
+                    <i class="material-icons">add_circle</i>
+                </button>
+                <p class="hover-message">드디어 일을 하고 왔구나</p>
+            </div>
+            <div class="block liability">
+                <h2>부채</h2>
+                <p id="liabilityValue"></p>
+                <button class="add-button" data-modal="liabilityModal">
+                    <i class="material-icons">add_circle</i>
+                </button>
+                <p class="hover-message">그만 좀 써라</p>
+            </div>
+            <div class="block net-asset">
+                <h2>순자산</h2>
+                <p id="netAssetValue"></p>
+            </div>
+        </div>
+    </div>
+    <div id="assetModal" class="modal">
+        <div class="modal-content">
+            <h3>자산 입력</h3>
+            <input type="number" id="assetInput" placeholder="자산 금액을 입력하세요">
+            <div class="modal-buttons-pl">
+                <button id="addAssetButton">추가</button>
+                <button class="close-button">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="liabilityModal" class="modal">
+        <div class="modal-content">
+            <h3>부채 입력</h3>
+            <input type="number" id="liabilityInput" placeholder="부채 금액을 입력하세요">
+            <div class="modal-buttons-pl">
+                <button id="addLiabilityButton">추가</button>
+                <button class="close-button">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<script>
+    // 자산, 부채, 순자산 값을 저장할 변수
+let asset = 0;
+let liability = 0;
+let netAsset = 0;
+
+// 자산 추가 버튼 클릭 이벤트
+document.getElementById('addAssetButton').addEventListener('click', function() {
+    const assetInput = document.getElementById('assetInput');
+    const assetValue = parseFloat(assetInput.value);
+    if (!isNaN(assetValue)) {
+        asset += assetValue;
+        updateValues();
+        closeModal('assetModal');
+        assetInput.value = '';
+    }
+});
+
+// 부채 추가 버튼 클릭 이벤트
+document.getElementById('addLiabilityButton').addEventListener('click', function() {
+    const liabilityInput = document.getElementById('liabilityInput');
+    const liabilityValue = parseFloat(liabilityInput.value);
+    if (!isNaN(liabilityValue)) {
+        liability += liabilityValue;
+        updateValues();
+        closeModal('liabilityModal');
+        liabilityInput.value = '';
+    }
+});
+
+// 모달 창 열기 함수
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
+
+// 모달 창 닫기 함수
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// 자산, 부채, 순자산 값 업데이트 함수
+function updateValues() {
+    document.getElementById('assetValue').textContent = asset.toLocaleString();
+    document.getElementById('liabilityValue').textContent = liability.toLocaleString();
+    netAsset = asset - liability;
+    document.getElementById('netAssetValue').textContent = netAsset.toLocaleString();
+}
+
+// 모달 창 열기 버튼 클릭 이벤트
+const addButtons = document.querySelectorAll('.add-button');
+addButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        openModal(modalId);
+    });
+});
+
+// 모달 창 닫기 버튼 클릭 이벤트
+const closeButtons = document.querySelectorAll('.close-button');
+closeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        const modalId = this.closest('.modal').id;
+        closeModal(modalId);
+    });
+});
+</script>
+</body>
+</html>

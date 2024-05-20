@@ -1,0 +1,39 @@
+SNS 수입 - sns.svg
+건강 - healthy.svg
+경조사 - CAC.svg
+교육 - edu.svg
+교통 - traffic.svg
+구독료 - subscriptionFee.svg
+금융수입 - inancialincome.svg
+급여 - salary.svg
+기부금 - donation.svg
+더치페이 - dutchpay.svg
+로열티 - royalty.svg
+문화생활 - culturallife.svg
+미용 - beauty.svg
+보험금 - insurancemoney.svg
+부동산 - realestate.svg
+부업 - sideline.svg
+사업 수입 - business.svg
+상속 - inheritance.svg
+상여금 - bonus.svg
+생활용품 - Householdgoods.svg
+세금 - tax.svg
+쇼핑 - shopping.svg
+수수료 - charge.svg
+숙박 - lodgment.svg
+아르바이트 - parttime.svg
+앱테크 - app.svg
+여가 - Leisure.svg
+여행 - travel.svg
+용돈 - pinmoney.svg
+유흥 - pleasure.svg
+육아 - parenting.svg
+음식 - food.svg
+이자 - interest.svg
+장학금 - scholarship.svg
+저축 - saving.svg
+주거 - dwelling.svg
+카페 - cafe.svg
+통신- communication.svg
+

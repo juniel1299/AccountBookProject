@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>가계부</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../../css/combine.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>카드 사용</h2>
+        <div class="card-image"></div>
+        <div>
+            <label for="start-date">시작일 </label>
+            <input type="text" id="start-date" name="start-date">
+            <label for="end-date">종료일 </label>
+            <input type="text" id="end-date" name="end-date">
+            <button id="search-btn">검색</button>
+        </div>
+        <table class="transaction-table">
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>금액</th>
+                    <th>카테고리</th>
+                    <th>결제처</th>
+                    <th>입금/지출</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            // jQuery datepicker 초기화
+            $("#start-date, #end-date").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+
+            // 검색 버튼 클릭 이벤트 처리
+            $("#search-btn").click(function() {
+                var startDate = $("#start-date").val();
+                var endDate = $("#end-date").val();
+
+                // 서버에서 데이터 가져오기 (AJAX 요청)
+                $.ajax({
+                    url: "/get-transactions",
+                    method: "POST",
+                    data: {
+                        startDate: startDate,
+                        endDate: endDate
+                    },
+                    success: function(response) {
+                        // 가져온 데이터를 날짜 순으로 정렬
+                        var transactions = response.sort(function(a, b) {
+                            return new Date(b.date) - new Date(a.date);
+                        });
+
+                        // 데이터를 테이블에 표시
+                        var transactionList = $("#transaction-list");
+                        transactionList.empty();
+
+                        transactions.forEach(function(transaction) {
+                            var row = "<tr>" +
+                                "<td>" + transaction.date + "</td>" +
+                                "<td>" + transaction.amount + "</td>" +
+                                "<td>" + transaction.category + "</td>" +
+                                "<td>" + transaction.payee + "</td>" +
+                                "<td>" + (transaction.isIncome ? "입금" : "지출") + "</td>" +
+                                "</tr>";
+                            transactionList.append(row);
+                        });
+                    },
+                    error: function() {
+                        alert("데이터를 가져오는데 실패했습니다.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

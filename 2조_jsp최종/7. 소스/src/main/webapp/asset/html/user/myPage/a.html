@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+    .myCards {
+        width: 80%;
+    }
+
+    .myCard {
+        border: 1px solid black;
+        width: 600px;
+        height: 150px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+
+    .myCardImg {
+        background-color: aqua;
+        width: 100px;
+        height: 70px;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .myCardImg>img {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        top: 10%;
+        right: 10%;
+    }
+
+    .myCardName,
+    .myCardCompany,
+    .myCardNickname {
+        width: 200px;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .myCardName>div:first-child,
+    .myCardCompany>div:first-child,
+    .myCardNickname>div:first-child {
+        margin-right: 10px;
+        background-color: #ffffff;
+        margin: 2px;
+    }
+
+    .myCardName>div:nth-child(2),
+    .myCardCompany>div:nth-child(2),
+    .myCardNickname>div:nth-child(2) {
+        background-color: #ffffff;
+        margin: 2px;
+
+    }
+
+    .moreMyCard {
+        border: 1px solid black;
+        width: 580px;
+        height: 150px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    
+
+
+.myCardMoreNum{
+    display: flex;
+    flex-direction: row;
+}
+
+.myCardMoreNoneNum{
+    display: flex;
+    flex-direction: column;
+}
+
+.myCardMoreNoneNum div{
+    display: flex;
+    flex-direction: row;
+
+}
+
+  
+
+    .myCardBtn {
+        position: relative;        
+    }
+
+    .myCardBtn > button {
+        border: none;
+        border-radius: 10px;
+        background-color: aquamarine;
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        width: 50px;
+        height: 40px;
+    }
+
+    .addMyCard {
+        position: relative;
+    }
+
+    .addMyCard > button {
+        width: 100px;
+        height: 50px;
+        border: none;
+        border-radius: 10px;
+        position: absolute;
+        top: 30px;
+        right: 250px;
+        background-color: aquamarine;
+        text-align: center;
+        font-weight: bold;
+    }
+    #morecardcontent{
+        margin: 10px;
+
+    }
+    
+
+
+</style>
+
+<body>
+    <div class="myCards">
+        <div class="myCard">
+            <div class="myCardImg">
+                <img src="../../../html/images/myPage-viewCards-card.png" alt="">
+            </div>
+            <div class="myCard-detail">
+                <div class="myCardName">
+                    <div>카드명</div>
+                    <div>OO카드</div>
+                </div>
+                <div class="myCardCompany">
+                    <div>카드사</div>
+                    <div>OO은행</div>
+                </div>
+                <div class="myCardNickname">
+                    <div>별칭</div>
+                    <div>교통카드</div>
+                </div>
+            </div>
+            <div class="myCardBtn">
+                <button class="material-symbols-outlined">
+                    expand_more
+                </button>
+            </div>
+        </div>
+        <div class="moreMyCard">
+            <!-- 카드 번호, 카드사, 카드명, 별칭, 유효기간 -->
+            <div id="morecardcontent">
+            <div class="myCardMoreNum">
+                <div>카드 번호</div>
+                <div>1234-1234</div>
+            </div>
+            <div class="myCardMoreNoneNum">
+                <div class="myCardMoreCompany">
+                    <div>카드사</div>
+                    <div>OO은행</div>
+                </div>
+                <div class="myCardMoreName">
+                    <div>카드명</div>
+                    <div>OO카드</div>
+                </div>
+                <div class="myCardMoreNickname">
+                    <div>별칭</div>
+                    <div>교통카드</div>
+                </div>
+                <div class="myCardMorePeriod">
+                    <div>유효기간</div>
+                    <div>0000년 00월</div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="myCard">
+            <div class="myCardImg">
+                <img src="../../../html/images/myPage-viewCards-card.png" alt="">
+            </div>
+            <div class="myCard-detail">
+                <div class="myCardName">
+                    <div>카드명</div>
+                    <div>OO카드</div>
+                </div>
+                <div class="myCardCompany">
+                    <div>카드사</div>
+                    <div>OO은행</div>
+                </div>
+                <div class="myCardNickname">
+                    <div>별칭</div>
+                    <div>교통카드</div>
+                </div>
+            </div>
+            <div class="myCardBtn">
+                <button class="material-symbols-outlined">
+                    expand_more
+                </button>
+            </div>
+        </div>
+        <div class="moreMyCard">
+            <!-- 카드 번호, 카드사, 카드명, 별칭, 유효기간 -->
+            <div class="myCardMoreNum">
+                <div>카드 번호</div>
+                <div>1234-1234</div>
+            </div>
+            <div class="myCardMoreNoneNum">
+                <div class="myCardMoreCompany">
+                    <div>카드사</div>
+                    <div>OO은행</div>
+                </div>
+                <div class="myCardMoreName">
+                    <div>카드명</div>
+                    <div>OO카드</div>
+                </div>
+                <div class="myCardMoreNickname">
+                    <div>별칭</div>
+                    <div>교통카드</div>
+                </div>
+                <div class="myCardMorePeriod">
+                    <div>유효기간</div>
+                    <div>0000년 00월</div>
+                </div>
+            </div>
+        </div>
+        <div class="addMyCard">
+            <button type="submit">+ 추가하기</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const expandButtons = document.querySelectorAll('.material-symbols-outlined');
+            const moreCards = document.querySelectorAll('.moreMyCard');
+
+            // 초기에는 모든 moreMyCard를 숨깁니다.
+            moreCards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // 각각의 버튼에 대해 이벤트 리스너를 추가합니다.
+            expandButtons.forEach((button, index) => {
+                button.addEventListener('click', function () {
+                    if (moreCards[index].style.display === 'none') {
+                        moreCards[index].style.display = 'block';
+                        button.textContent = 'expand_less';
+                    } else {
+                        moreCards[index].style.display = 'none';
+                        button.textContent = 'expand_more';
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

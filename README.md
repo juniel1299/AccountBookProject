@@ -40,14 +40,28 @@
   <img src="https://img.shields.io/badge/eclipseide-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">   <br/> 
 
 
+<hr/>
 
-
-
+## :mag: API <br/>
+1. 
 
   <hr/>
 
   ## 📝 개발 문서 </br>
-  곧 추가 예정
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/1.%EA%B8%B0%ED%9A%8D%EC%84%9C">1. 기획서 </a> </div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/2.%20%EC%9A%94%EA%B5%AC%EB%B6%84%EC%84%9D%EC%84%9C">2. 요구분석서 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/3.%20ERD">3. ERD </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/3.%20%EA%B0%9C%EB%85%90%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8">3. 개념 다이어그램 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/4.%20%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84/2%EC%A1%B0_%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84_%EC%9D%B4%EB%AF%B8%EC%A7%80">4. 화면 설계 및 화면 설계 이미지 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/5.%20%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C(DDL)">5. DDL </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/5.%20%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C(DML)">5. DML </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/6.%20%EC%88%9C%EC%84%9C%EB%8F%84">6. 순서도 </a></div>
+<div><a href="">7.소스</a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/8.%20%ED%99%94%EB%A9%B4%EC%BA%A1%EC%B2%98">8. 화면캡처 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/9.%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C">9. PPT </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/10.%20%EA%B0%9C%EB%B0%9C%EB%AC%B8%EC%84%9C/document">10. 개발문서 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/tree/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/11.%20%EC%9A%94%EC%95%BD%EB%B3%B8"> 11. 요약본 </a></div>
+<div><a href="https://github.com/AcountBookJSP/AccountBook/blob/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/JSP%20Project%20%EC%98%81%EC%83%81%20(%EC%99%84).mp4"> 시연 영상 </a></div>
 
 
 ## 😀  해당 프로젝트 참가 멤버

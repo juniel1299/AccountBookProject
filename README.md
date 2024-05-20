@@ -2,6 +2,8 @@
 
 # 💻 Servlet/JSP 프로젝트
 
+ 프로젝트 진행 기간 4월 19일 ~ 5월 13일
+ 프로젝트 총 인원 6명
 ---
 
 ## 📝 요약
@@ -69,8 +71,14 @@
 <div><a href="https://github.com/AcountBookJSP/AccountBook/blob/main/2%EC%A1%B0_jsp%EC%B5%9C%EC%A2%85/JSP%20Project%20%EC%98%81%EC%83%81%20(%EC%99%84).mp4"> 시연 영상 </a></div>
 
 
-## 😀  해당 프로젝트 참가 멤버
+## 😀  해당 프로젝트 참가 멤버 및 역할
 
 |<img src="https://avatars.githubusercontent.com/u/155717265?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/156043182?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/62318700?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/88925213?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/128907052?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/37370079?v=4" width="150" height="150"/>|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |[@Kim0f85](https://github.com/Kim0f85)|SXNGJUNHX<br/>[@SXNGJUNHX](https://github.com/SXNGJUNHX)|juniel1299<br/>[@juniel1299](https://github.com/juniel1299)|zin<br/>[@zzzzzzin](https://github.com/zzzzzzin)|[@VVjD](https://github.com/VVjD)|[@sungken](https://github.com/sungken)|
+|가계부 CRUD|게시판 페이지|로그인 및 회원가입 관련 기능|개인정보 관리|대시보드(가계부 분석,목록/카드 사용 내역|게시판 작성|
+|가계부 목록|게시판 CRUD|세션 및 쿠키 기능|게시판 이용 내역|마이페이지(친구초대)|게시판 조회|
+|가계부 달력|게시판 검색 및 페이징|카드 추천 관련 기능 및 알고리즘|마이페이지 프론트|비밀번호 찾기/재설정|더미 데이터 생성|
+|가계부 프론트|카드 카테고리 별 추천|댓글 및 대댓글 기능|-|프론트 전체 CSS|View 데이터 생성|
+
+### 역할 

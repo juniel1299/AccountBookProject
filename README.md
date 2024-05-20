@@ -66,12 +66,6 @@
 
 ## 😀  해당 프로젝트 참가 멤버
 
-|이름|깃허브 주소|비고|
-|------|---|---|
-|김수홍|https://github.com/Kim0f85|테스트3|
-|송준호|https://github.com/SXNGJUNHX|테스트3|
-|장원준|https://github.com/juniel1299|테스트3|
-|정유진|https://github.com/zzzzzzin|테스트3|
-|정혜정|https://github.com/VVjD|테스트3|
-|지성근|https://github.com/sungken|테스트3|
-
+|<img src="https://avatars.githubusercontent.com/u/155717265?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/156043182?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/62318700?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/88925213?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/128907052?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/37370079?v=4" width="150" height="150"/>|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|[@Kim0f85](https://github.com/Kim0f85)|SXNGJUNHX<br/>[@SXNGJUNHX](https://github.com/SXNGJUNHX)|juniel1299<br/>[@juniel1299](https://github.com/juniel1299)|zin<br/>[@zzzzzzin](https://github.com/zzzzzzin)|[@VVjD](https://github.com/VVjD)|[@sungken](https://github.com/sungken)|

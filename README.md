@@ -19,7 +19,8 @@
 <hr/>
 <div align="left">
 <h2>  📕 Skill </h2> <br/>
-<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white"/> 
+ 
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
 <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 

@@ -19,27 +19,27 @@
 <hr/>
 <div align="left">
 <h2>  📕 Skill </h2> <br/>
-<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white"/> <br/>
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <br/>
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <br/>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <br/>
-<img src="https://img.shields.io/badge/fontawesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=black"> <br/>
- <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <br/>
+<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white"/> 
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+<img src="https://img.shields.io/badge/fontawesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=black"> 
+ <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> 
 
 <hr/>
 
 ## 📂 Collaborative Software <br/>
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">   <br/> 
-<img src="https://img.shields.io/badge/canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white">   <br/> 
-<img src="https://img.shields.io/badge/googledocs-4285F4?style=for-the-badge&logo=googledocs&logoColor=white">  <br/> 
-<img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"> <br/>
-<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">   <br/> 
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">   
+<img src="https://img.shields.io/badge/canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white">   
+<img src="https://img.shields.io/badge/googledocs-4285F4?style=for-the-badge&logo=googledocs&logoColor=white">  
+<img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"> 
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">   
 
   <hr/>
 
   ## :telescope: IDE <br/>
-  <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">   <br/> 
-  <img src="https://img.shields.io/badge/eclipseide-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">   <br/> 
+  <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">  
+  <img src="https://img.shields.io/badge/eclipseide-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">   
 
 
 <hr/>

@@ -73,7 +73,10 @@
 
 ## 📹 시연 영상
 
-https://github.com/juniel1299/AccountBookProject/assets/62318700/8a2dd1c3-feea-44b1-8f00-411f89e6b58f
+
+
+Uploading JSP_Project__1_1.mp4…
+
 
 
 
